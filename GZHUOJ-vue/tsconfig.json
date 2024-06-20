@@ -7,5 +7,29 @@
     {
       "path": "./tsconfig.app.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "target": "esnext", /* 目标代码的版本 */
+    "module": "esnext", /* 模块解析方式 */
+    "moduleResolution": "node", /* 模块解析策略 */
+    "strict": true, /* 启用所有严格类型检查选项 */
+    "jsx": "preserve", /* 保留JSX代码以便后续转换 */
+    "esModuleInterop": true, /* 生成导入导出时的Interop模式 */
+    "allowSyntheticDefaultImports": true, /* 允许从没有设置默认导出的模块中默认导入 */
+    "skipLibCheck": true, /* 跳过库文件的类型检查 */
+    "forceConsistentCasingInFileNames": true, /* 文件名大小写一致性 */
+    "resolveJsonModule": true, /* 允许导入JSON模块 */
+    "isolatedModules": false, /* 将每个文件作为独立的模块 */
+    "noEmit": true, /* 不生成输出文件 */
+    "types": [
+      "vite/client",
+      "vue"
+    ], /* 需要引入的类型声明文件 */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  }
 }

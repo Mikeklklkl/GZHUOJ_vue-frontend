@@ -1,0 +1,95 @@
+<template>
+  <div>
+    <div class="demo-image" style="background-color: #545c64">
+      <el-image class="full-image" :src="url" fit="contain" />
+    </div>
+    <div>
+      <el-row class="tac">
+        <el-col>
+          <el-menu
+            active-text-color="#ffd04b"
+            background-color="#545c64"
+            text-color="#fff"
+            style="border: 0"
+          >
+            <el-menu-item index="1">
+              <el-icon><icon-menu /></el-icon>
+              <span>主页</span>
+            </el-menu-item>
+
+            <el-menu-item index="2">
+              <el-icon><icon-menu /></el-icon>
+              <span>开放题目集</span>
+            </el-menu-item>
+
+            <el-menu-item index="3">
+              <el-icon><document /></el-icon>
+              <span>提交状态</span>
+            </el-menu-item>
+
+            <el-menu-item index="4">
+              <el-icon><setting /></el-icon>
+              <span>比赛</span>
+            </el-menu-item>
+            <el-menu-item index="5">
+              <el-icon><setting /></el-icon>
+              <span>XCPC标准比赛</span>
+            </el-menu-item>
+            <el-menu-item index="7">
+              <el-icon><setting /></el-icon>
+              <span>ACM技巧</span>
+            </el-menu-item>
+            <el-menu-item index="8">
+              <el-icon><setting /></el-icon>
+              <span>常见疑问</span>
+            </el-menu-item>
+            <el-menu-item index="9">
+              <el-icon><setting /></el-icon>
+              <span>工具集</span>
+            </el-menu-item>
+            
+          </el-menu>
+        </el-col>
+      </el-row>
+    </div>
+    <div>
+      <div class="container">
+        <el-avatar
+          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+          style="margin-top: 2px; margin-bottom: 7px"
+        />
+      </div>
+      <div class="container">
+        <h3 style="margin-top: 15px; margin-bottom: 15px" class="text-center">
+          姓名姓名姓名
+        </h3>
+      </div>
+      <div class="container">
+        <el-button type="primary">注册</el-button>
+        <el-button type="primary">登录</el-button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+const url =
+  "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg";
+</script>
+
+<style>
+/*@import url(../style/debug.css);*/
+.full-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 确保图片覆盖并保持比例 */
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-center {
+  text-align: center; /* 水平居中 */
+}
+</style>
