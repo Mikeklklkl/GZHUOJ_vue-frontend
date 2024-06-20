@@ -5,10 +5,7 @@
         <SideNav></SideNav>
         </el-aside>
       <el-container>
-        <el-header>
-          <TopNav></TopNav>
-          </el-header>
-        <el-main>
+        <el-main style="padding:0;">
           <RouterView />
         </el-main>
       </el-container>
@@ -19,7 +16,6 @@
 
 <script setup lang="ts">
 import SideNav from "./components/SideNav.vue";
-import TopNav from "./components/TopNav.vue";
  </script>
 
 <style scoped>

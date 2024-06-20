@@ -47,7 +47,6 @@
               <el-icon><setting /></el-icon>
               <span>工具集</span>
             </el-menu-item>
-            
           </el-menu>
         </el-col>
       </el-row>
@@ -60,11 +59,11 @@
         />
       </div>
       <div class="container">
-        <h3 style="margin-top: 15px; margin-bottom: 15px" class="text-center">
-          姓名姓名姓名
-        </h3>
+        <el-text class="w-150px mb-2" style="margin-top:5px;" truncated>
+          Self element set width 100px5555555555555555555555555555555555
+        </el-text>
       </div>
-      <div class="container">
+      <div class="container" style="margin-top:5px;">
         <el-button type="primary">注册</el-button>
         <el-button type="primary">登录</el-button>
       </div>
