@@ -12,6 +12,11 @@ const routes: Array<RouteRecordRaw> = [
     path:'/question',
     name:'qusetion',
     component:()=>import('../pages/question/Question.vue')
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component:()=>import('../pages/404/404.vue')
   }
 
 ];
