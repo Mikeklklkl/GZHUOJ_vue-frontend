@@ -5,13 +5,13 @@ import HomePage from '../pages/home/HomePage.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    component: HomePage,
-    children:[
-      {
-        path:'/index',
-        component:()=>import('../pages/home/components/Index.vue')
-      }
-    ]
+    name:'HomePage',
+    component: HomePage,   
+  },
+  {
+    path:'/question',
+    name:'qusetion',
+    component:()=>import('../pages/question/Question.vue')
   }
 
 ];

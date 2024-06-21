@@ -1,5 +1,5 @@
-<template>
-  <div class="common-layout">
+<template >
+  <div class="common-layout" >
     <el-container style="height:100vh">
       <el-aside width="200px">      
         <SideNav></SideNav>
