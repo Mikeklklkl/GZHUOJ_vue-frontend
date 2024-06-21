@@ -1,3 +1,4 @@
+<!--主页面内容-->
 <template>
   <div class="flex flex-wrap gap-4">
     <div style="height: 250px">
