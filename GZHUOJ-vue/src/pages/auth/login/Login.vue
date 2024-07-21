@@ -10,18 +10,19 @@
       </p>
     </div>
     <div class="center">
-      <el-form :model="form" label-width="auto">
-        <el-form-item label="name" label-size="large">
-          <el-input v-model="form.name" clearable />
+      <el-form :model="formModel" label-width="auto">
+        <el-form-item label="Account"  label-size="large">
+          <el-input v-model="formModel.userAccount" clearable />
         </el-form-item>
-        <el-form-item label="pwd">
-          <el-input v-model="form.pwd" type="password" />
+        <el-form-item label="password">
+          <el-input v-model="formModel.password" type="password" />
         </el-form-item>
       </el-form>
     </div>
     <div style="margin-bottom:50px;">
-        <el-button type="primary" round>登录</el-button>
+        <el-button type="primary" round @click="login">登录</el-button>
     </div>
+
     <div>
         <el-link>
             forget
@@ -29,16 +30,41 @@
     </div>
   </el-card>
 </template>
-
+<!-- 现在先完成的第一个功能： 登录校验逻辑 -->
 <script setup>
-import { reactive } from "vue";
-const form = reactive({
-  name: "",
-  pwd: "",
+// import { reactive } from "vue";
+import {userLoginService} from '@/api/auth.js'
+import {ref} from 'vue'
+// import { ElMessage } from "element-plus";
+// const form = ref()
+const formModel = ref({
+  userAccount:  '',
+  password: ''
 });
 
-const onSubmit = () => {
-  console.log("submit!");
+// const rules ={
+//   userAccount: [
+//     {required: true , message: '请输入用户名', trigger: 'blur'},
+//     {min: 5, max: 10, message: '用户名必须是5—10位字符', trigger: 'blur'}
+//   ],
+//   password: [
+//     {required: true , message: '请输入密码', trigger: 'blur'},
+//     {
+//       pattern: /^\S{6,15}$/,
+//       message: '密码必须是6-15位的非空字符',
+//       trigger: 'blur'
+//     }
+//   ]
+// }
+
+const login = async () => {
+  await userLoginService(formModel.value)
+  // console.log(data.value)
+  // ElMessage.success(data.value)
+  // userStore.setToken(res.data.token)
+  // TODO 添加表单校验逻辑
+  // console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n");
+  ElMessage.success('登录成功');
 };
 </script>
 
