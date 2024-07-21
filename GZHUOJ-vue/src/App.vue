@@ -14,7 +14,7 @@
 </template>
 
 
-<script setup lang="ts">
+<script setup>
 import SideNav from "./components/SideNav.vue";
  </script>
 
