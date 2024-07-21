@@ -15,6 +15,7 @@ import { createVuestic } from "vuestic-ui";
 import { createIconsConfig } from "vuestic-ui";
 import "vuestic-ui/css";
 import "material-design-icons-iconfont/dist/material-design-icons.min.css";
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 
 const app = createApp(App)
@@ -24,5 +25,7 @@ app.use(createVuestic());
 app.use(ElementPlus)
 
 app.use(router)
-
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+}
 app.mount('#app')

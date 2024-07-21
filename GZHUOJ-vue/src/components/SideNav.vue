@@ -1,8 +1,9 @@
 <template>
   <div>
     <div class="demo-image" style="background-color: #545c64">
-      <el-image class="full-image" :src="url" fit="contain" />
+      <el-image class="full-image" :src="url" fit="contain"> </el-image>
     </div>
+
     <div>
       <el-row class="tac">
         <el-col>
@@ -12,13 +13,13 @@
             text-color="#fff"
             style="border: 0"
           >
-            <el-menu-item index="1" @click="goToHomePage"> 
-              <el-icon><icon-menu /></el-icon>
+            <el-menu-item index="1" @click="goToHomePage">
+              <el-icon><document /></el-icon>
               <span>主页</span>
             </el-menu-item>
 
             <el-menu-item index="2" @click="goToQuestion">
-              <el-icon><icon-menu /></el-icon>
+              <el-icon><document /></el-icon>
               <span>开放题目集</span>
             </el-menu-item>
 
@@ -67,12 +68,21 @@
         <el-button type="primary">注册</el-button>
         <el-button type="primary">登录</el-button>
       </div>
+      <!--
+      <div class="container" style="margin-top: 5px">
+        <el-button @click="changIsShow">
+          <el-icon><ArrowLeftBold /></el-icon>
+        </el-button>
+      </div>
+      -->
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useRouter } from "vue-router";
+import { defineProps } from "vue";
+
 const url =
   "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg";
 
@@ -80,13 +90,19 @@ const router = useRouter();
 
 const goToQuestion = () => {
   router.push({ name: "qusetion" });
-  console.log("跳转到question")
+  console.log("跳转到question");
 };
 
 const goToHomePage = () => {
   router.push({ name: "HomePage" });
-  console.log("跳转到HomePage")
+  console.log("跳转到HomePage");
 };
+
+const emits = defineEmits(["click"])
+const changIsShow =()=>{
+  emits("click")
+}
+
 </script>
 
 <style>
