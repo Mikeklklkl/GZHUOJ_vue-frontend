@@ -36,14 +36,8 @@ npm run build
 
 ### 项目依赖包下载
 ```sh
-npm install vue-router@next
-npm install @vitejs/plugin-vue --save-dev
-npm install -D unplugin-vue-components unplugin-auto-import
-npm install element-plus --save
-npm install material-design-icons-iconfont -D
-npm install vuestic-ui//不一定用得上
-npm install --save-dev @types/node
-npm i @types/node -D
+npm install --save @fortawesome/fontawesome-free
+npm install bulma
 ``` 
 
 ### 浏览器建议
