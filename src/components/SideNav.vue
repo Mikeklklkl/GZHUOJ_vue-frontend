@@ -14,39 +14,39 @@
             style="border: 0"
           >
             <el-menu-item index="1" @click="goToHomePage">
-              <el-icon><document /></el-icon>
+              <el-icon><HomeFilled /></el-icon>
               <span>主页</span>
             </el-menu-item>
 
             <el-menu-item index="2" @click="goToQuestion">
-              <el-icon><document /></el-icon>
+              <el-icon><List /></el-icon>
               <span>开放题目集</span>
             </el-menu-item>
 
             <el-menu-item index="3">
-              <el-icon><document /></el-icon>
+              <el-icon><Histogram /></el-icon>
               <span>提交状态</span>
             </el-menu-item>
 
             <el-menu-item index="4">
-              <el-icon><setting /></el-icon>
+              <el-icon><Grid /></el-icon>
               <span>比赛</span>
             </el-menu-item>
             <el-menu-item index="5">
-              <el-icon><setting /></el-icon>
+              <el-icon><TrendCharts /></el-icon>
               <span>XCPC标准比赛</span>
             </el-menu-item>
             <el-menu-item index="7">
-              <el-icon><setting /></el-icon>
+              <el-icon><StarFilled /></el-icon>
               <span>ACM技巧</span>
             </el-menu-item>
             <el-menu-item index="8">
-              <el-icon><setting /></el-icon>
+              <el-icon><BellFilled /></el-icon>
               <span>常见疑问</span>
             </el-menu-item>
-            <el-menu-item index="9">
-              <el-icon><setting /></el-icon>
-              <span>工具集</span>
+            <el-menu-item index="9" @click="goToManage">
+              <el-icon><UserFilled /></el-icon>
+              <span>管理页面</span>
             </el-menu-item>
           </el-menu>
         </el-col>
@@ -66,7 +66,7 @@
       </div>
       <div class="container" style="margin-top: 5px">
         <el-button type="primary">注册</el-button>
-        <el-button type="primary">登录</el-button>
+        <el-button type="primary" @click="goToLogin">登录</el-button>
       </div>
       <!--
       <div class="container" style="margin-top: 5px">
@@ -96,6 +96,16 @@ const goToQuestion = () => {
 const goToHomePage = () => {
   router.push({ name: "HomePage" });
   console.log("跳转到HomePage");
+};
+
+const goToManage = () => {
+  router.push({ name: "manage" });
+  console.log("跳转到manage");
+};
+
+const goToLogin = () => {
+  router.push({ name: "Login" });
+  console.log("跳转到Login");
 };
 
 const emits = defineEmits(["click"])
