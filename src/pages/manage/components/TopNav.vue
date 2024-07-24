@@ -23,7 +23,7 @@
     <el-sub-menu index="3">
       <template #title>User</template>
       <el-menu-item index="3-1" @click="goToUesrList">User List</el-menu-item>
-      <el-menu-item index="3-2">User Generator</el-menu-item>
+      <el-menu-item index="3-2" @click="goToUserGenerator">User Generator</el-menu-item>
     </el-sub-menu>
   </el-menu>
 </template>
@@ -40,6 +40,10 @@ const goToUesrList = () => {
 const goToArticleList = () => {
   router.push({ name: "articlelist" });
   console.log("跳转到articlelist");
+};
+const goToUserGenerator = () => {
+  router.push({ name: "usergenerator" });
+  console.log("跳转到usergenerator");
 };
 </script>
 
