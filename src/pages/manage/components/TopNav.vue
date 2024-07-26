@@ -14,8 +14,8 @@
     </el-sub-menu>
     <el-sub-menu index="2">
       <template #title>Problem</template>
-      <el-menu-item index="2-1">Problem List</el-menu-item>
-      <el-menu-item index="2-2">Problem Add</el-menu-item>
+      <el-menu-item index="2-1" @click="goToProblemList">Problem List</el-menu-item>
+      <el-menu-item index="2-2" @click="goToProblemAdd">Problem Add</el-menu-item>
       <el-menu-item index="2-3">Problem Rejudge</el-menu-item>
       <el-menu-item index="2-4">Problem Export</el-menu-item>
       <el-menu-item index="2-5">Problem Import</el-menu-item>
@@ -44,6 +44,14 @@ const goToArticleList = () => {
 const goToUserGenerator = () => {
   router.push({ name: "usergenerator" });
   console.log("跳转到usergenerator");
+};
+const goToProblemAdd = () => {
+  router.push({ name: "problemadd" });
+  console.log("跳转到problemadd");
+};
+const goToProblemList = () => {
+  router.push({ name: "problemlist" });
+  console.log("跳转到problem;ist");
 };
 </script>
 

@@ -33,17 +33,28 @@ const routes: Array<RouteRecordRaw> = [
       {
         path:'userlist',
         name:'userlist',
-        component:()=>import("../pages/manage/userlist/UserList.vue")
+        component:()=>import("../pages/manage/user/userlist/UserList.vue")
       },
       {
         path:'articlelist',
         name:'articlelist',
-        component:()=>import("../pages/manage/articlelist/ArticleList.vue")
+        component:()=>import("../pages/manage/article/articlelist/ArticleList.vue")
       },
       {
         path:'usergenerator',
         name:'usergenerator',
-        component:()=>import("../pages/manage/usergenerator/UserGenerator.vue")
+        component:()=>import("../pages/manage/user/usergenerator/UserGenerator.vue")
+      },
+      {
+        path:'problemadd',
+        name:'problemadd',
+        component:()=>import("../pages/manage/problem/problemadd/ProblemAdd.vue")
+      },
+
+      {
+        path:'problemlist',
+        name:'problemlist',
+        component:()=>import("../pages/manage/problem/problemlist/ProblemList.vue")
       }
     ]
   },
