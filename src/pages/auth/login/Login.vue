@@ -59,11 +59,7 @@ const formModel = ref({
 
 const login = async () => {
   await userLoginService(formModel.value)
-  // console.log(data.value)
-  // ElMessage.success(data.value)
-  // userStore.setToken(res.data.token)
-  // TODO 添加表单校验逻辑
-  // console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n");
+
   ElMessage.success('登录成功');
 };
 </script>
