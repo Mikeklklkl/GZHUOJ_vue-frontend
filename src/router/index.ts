@@ -26,6 +26,17 @@ const routes: Array<RouteRecordRaw> = [
     ]
   },
   {
+    path:'/competition',
+    name:'competition',
+    component:()=>import('../pages/competition/Competition.vue'),
+
+  },
+  {
+    path:'/commit',
+    name:'commit',
+    component:()=>import('../pages/commit/Commit.vue')
+  },
+  {
     path: '/manage',
     name: 'manage',
     component: () => import('../pages/manage/Manage.vue'),

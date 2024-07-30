@@ -1,11 +1,13 @@
 <template >
-  <div class="common-layout">
-    <el-container style="height: 100vh">
-      <el-aside width="200px" v-show="isShow">
+  <div class="common-layout" >
+    <el-container style="height: 100vh" >
+
+      <!--侧边栏-->
+      <el-aside width="200px" v-show="isShow" style="background-color:rgb(250,250,250);">
         <SideNav @click="toggleShow" />
       </el-aside>
-
-      <el-container>
+      <!--主要内容-->
+      <el-container style="background-color:rgb(255,255,255)">
         <el-main style="padding: 0">
           <el-button class="floating-button" @click="toggleShow">
             <div v-if="isShow">
@@ -22,6 +24,7 @@
           <RouterView />
         </el-main>
       </el-container>
+
     </el-container>
   </div>
 </template>

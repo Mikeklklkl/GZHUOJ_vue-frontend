@@ -23,12 +23,12 @@
               <span>开放题目集</span>
             </el-menu-item>
 
-            <el-menu-item index="3">
+            <el-menu-item index="3" @click="goToCommit">
               <el-icon><Histogram /></el-icon>
               <span>提交状态</span>
             </el-menu-item>
 
-            <el-menu-item index="4">
+            <el-menu-item index="4" @click="goToCompetition">
               <el-icon><Grid /></el-icon>
               <span>比赛</span>
             </el-menu-item>
@@ -52,22 +52,27 @@
         </el-col>
       </el-row>
     </div>
-    <div>
+
+    <div >
+
       <div class="container">
         <el-avatar
           src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
           style="margin-top: 2px; margin-bottom: 7px"
         />
       </div>
+
       <div class="container">
         <el-text class="w-150px mb-2" style="margin-top: 5px" truncated>
           Self element set width 100px5555555555555555555555555555555555
         </el-text>
       </div>
+
       <div class="container" style="margin-top: 5px">
         <el-button type="primary">注册</el-button>
         <el-button type="primary" @click="goToLogin">登录</el-button>
       </div>
+
       <!--
       <div class="container" style="margin-top: 5px">
         <el-button @click="changIsShow">
@@ -76,6 +81,7 @@
       </div>
       -->
     </div>
+
   </div>
 </template>
 
@@ -98,6 +104,11 @@ const goToHomePage = () => {
   console.log("跳转到HomePage");
 };
 
+const goToCompetition = () => {
+  router.push({ name: "competition" });
+  console.log("跳转到competition");
+};
+
 const goToManage = () => {
   router.push({ name: "manage" });
   console.log("跳转到manage");
@@ -107,6 +118,12 @@ const goToLogin = () => {
   router.push({ name: "Login" });
   console.log("跳转到Login");
 };
+
+const goToCommit = () => {
+  router.push({ name: "commit" });
+  console.log("跳转到commit");
+};
+
 
 const emits = defineEmits(["click"])
 const changIsShow =()=>{
