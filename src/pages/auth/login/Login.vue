@@ -1,13 +1,35 @@
+<script setup>
+import {ref} from 'vue'
+import {userLoginService} from '@/api/auth.js'
+import { userInfoStore } from '@/stores/userInfoStore';
+import { useRouter } from 'vue-router';
+
+const userInfo = userInfoStore();
+const router = useRouter();
+
+const formModel = ref({
+  userAccount:  '',
+  password: ''
+});
+
+const login = async () => {
+  console.log(formModel.value)
+  const res = await userLoginService(formModel.value)
+  // console.log("token222" , res.headers['token'])
+  userInfo.setToken(res.headers['token'])
+  // console.log("token111" , userInfo.token)
+  userInfo.setUserAccount(res.data.userAccount)
+  userInfo.setUserName(res.data.userName)
+  
+  router.push('/home')
+  ElMessage.success("登录成功")
+};
+</script>
+
 <template >
   <el-card style="width:100%" class="center-container" >
     <div>
       <h1 class="va-h1 text-center">Login</h1>
-    </div>
-    <div>
-      <p style="font-size: 24px" class="center">
-        Have an account?
-        <el-link style="font-size: 20px" type="primary"> Sign up </el-link>
-      </p>
     </div>
     <div class="center">
       <el-form :model="formModel" label-width="auto">
@@ -21,49 +43,10 @@
     </div>
     <div style="margin-bottom:50px;">
         <el-button type="primary" round @click="login">登录</el-button>
-    </div>
-
-    <div>
-        <el-link>
-            forget
-        </el-link>
+        <!-- <el-button type="primary" round @click="register">注册</el-button> -->
     </div>
   </el-card>
 </template>
-<!-- 现在先完成的第一个功能： 登录校验逻辑 -->
-<script setup>
-// import { reactive } from "vue";
-import {userLoginService} from '@/api/auth.js'
-import {ref} from 'vue'
-// import { ElMessage } from "element-plus";
-// const form = ref()
-const formModel = ref({
-  userAccount:  '',
-  password: ''
-});
-
-// const rules ={
-//   userAccount: [
-//     {required: true , message: '请输入用户名', trigger: 'blur'},
-//     {min: 5, max: 10, message: '用户名必须是5—10位字符', trigger: 'blur'}
-//   ],
-//   password: [
-//     {required: true , message: '请输入密码', trigger: 'blur'},
-//     {
-//       pattern: /^\S{6,15}$/,
-//       message: '密码必须是6-15位的非空字符',
-//       trigger: 'blur'
-//     }
-//   ]
-// }
-
-const login = async () => {
-  await userLoginService(formModel.value)
-
-  ElMessage.success('登录成功');
-};
-</script>
-
 
 
 <style scoped>

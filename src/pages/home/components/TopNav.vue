@@ -1,6 +1,6 @@
 <template>
   <el-tabs type="border-card" style="border-bottom: none;">
-    <el-tab-pane label="CSG-CPC主页" >
+    <el-tab-pane label="GZHUOJ主页" >
         <Index></Index>
     </el-tab-pane>
     <el-tab-pane label="团队新闻">

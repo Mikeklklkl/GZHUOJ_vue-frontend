@@ -1,5 +1,6 @@
 <template>
-  <div style="background-color: rgb(255, 255, 255)">
+  <div style="background-color: rgb(250,250,250)">
+    <el-card padding>
     <div style="padding-top: 20px; padding-left: 20px">
       <el-text style="font-size: 25px"> Add Problem </el-text>
     </div>
@@ -237,6 +238,7 @@
         <el-button type="primary">Add Problem</el-button>
       </div>
     </div>
+    </el-card>
   </div>
 </template>
 
