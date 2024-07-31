@@ -2,7 +2,9 @@ import axios, { Axios } from 'axios'
 import config from '/public/config.json'
 import router from '@/router'
 import { ElMessage } from 'element-plus'
+import { userInfoStore } from '@/stores/userInfoStore';
 
+const userInfo = userInfoStore();
 // ##### 设置axios的一些默认配置
 // 1. 允许跨域信息设置凭证
 axios.defaults.withCredentials = true
@@ -12,7 +14,6 @@ axios.defaults.timeout = 10000
 
 // ##### 自定义添加请求头配置
 // 1. 通用请求头的配置
-axios.defaults.headers['token'] = localStorage.getItem('token') || ' '
 
 // 2. post请求头配置
 axios.defaults.headers.post['Content-Type'] = 'application/json'
@@ -24,11 +25,15 @@ axios.defaults.headers.post['Content-Type'] = 'application/json'
  */
 axios.interceptors.request.use(
     config =>{
+        // 设置token
+        config.headers["token"] = userInfo.token
+        console.log(config.headers)
         return config
     },
     function(error){
         // 处理请求错误
         console.log("out before request")
+        console.log(error.message)
         return Promise.reject(error);
     }
 )
@@ -40,9 +45,9 @@ axios.interceptors.request.use(
  */
 axios.interceptors.response.use(
     response => {
-        const token = response.headers['token'];
-        console.log("token:", token);
-        console.log("out after response")
+        // const token = response.headers['token'];
+        // console.log("token:", token);
+        // console.log("out after response")
         return response;
     },
     function(error){

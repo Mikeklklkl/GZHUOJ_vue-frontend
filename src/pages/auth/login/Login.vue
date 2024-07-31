@@ -15,10 +15,9 @@ const formModel = ref({
 const login = async () => {
   console.log(formModel.value)
   const res = await userLoginService(formModel.value)
-  console.log(res)
-
-
+  // console.log("token222" , res.headers['token'])
   userInfo.setToken(res.headers['token'])
+  // console.log("token111" , userInfo.token)
   userInfo.setUserAccount(res.data.userAccount)
   userInfo.setUserName(res.data.userName)
   
