@@ -18,6 +18,7 @@
     "bulma": "^1.0.1",
     "element-plus": "^2.7.7",
     "pinia": "^2.2.0",
+    "vditor": "^3.10.4",
     "vue": "^3.4.29",
     "vue-router": "^4.0.13",
     "vuestic-ui": "^1.9.12"
