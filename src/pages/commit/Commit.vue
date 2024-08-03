@@ -105,16 +105,26 @@
       </el-table-column>
       <el-table-column prop="submit_time" label="SUBMIT TIME">
       </el-table-column>
+      <el-table-column prop="detail" label="DETAIL">
+        <template #default="scope">
+          <div @click="goToDetail(scope.row.detail)" style="cursor: pointer">
+            {{ scope.row.detail }}
+          </div>
+        </template>
+      </el-table-column>
     </el-table>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 const schoolValue = ref("");
 const teamValue = ref("");
 const statusValue = ref("");
+
+const router = useRouter();
 
 const school_options = [
   { value: "中山大学", label: "中山大学" },
@@ -161,6 +171,7 @@ const getColor = (value: string) => {
   }
 };
 
+//这里的detail应该得是每一个队伍自己题目的提交索引，根据这个来展示不同的页面
 const commit = [
   {
     problem: "A",
@@ -168,16 +179,68 @@ const commit = [
     team: "888队",
     status: "Accepted",
     submit_time: "04:59:59",
+    detail: "11224",
   },
   {
-    problem: "A",
+    problem: "B",
+    school: "广州大学",
+    team: "888队",
+    status: "Compilation Error",
+    submit_time: "04:59:59",
+    detail: "11223",
+  },
+  {
+    problem: "C",
+    school: "广州大学",
+    team: "888队",
+    status: "Memory Limit Exceeded",
+    submit_time: "04:59:59",
+  },
+  {
+    problem: "D",
+    school: "广州大学",
+    team: "888队",
+    status: "Output Limit Exceeded",
+    submit_time: "04:59:59",
+  },
+  {
+    problem: "E",
+    school: "广州大学",
+    team: "888队",
+    status: "Runtime Error",
+    submit_time: "04:59:59",
+  },
+
+  {
+    problem: "F",
+    school: "广州大学",
+    team: "888队",
+    status: "Time Limit Exceeded",
+    submit_time: "04:59:59",
+  },
+  {
+    problem: "G",
+    school: "广州大学",
+    team: "888队",
+    status: "Wrong Answer",
+    submit_time: "04:59:59",
+  },
+  {
+    problem: "H",
+    school: "广州大学",
+    team: "888队",
+    status: "Wrong Answer",
+    submit_time: "04:59:59",
+  },
+  {
+    problem: "I",
     school: "广州大学",
     team: "888队",
     status: "Accepted",
     submit_time: "04:59:59",
   },
   {
-    problem: "C",
+    problem: "J",
     school: "广州大学",
     team: "888队",
     status: "Accepted",
@@ -188,11 +251,25 @@ const commit = [
 const getProblemColor = (problem: string) => {
   switch (problem) {
     case "A":
-      return "red";
+      return "rgb(209,86,86)";
     case "B":
-      return "green";
+      return "rgb(181,98,228)";
     case "C":
-      return "blue";
+      return "rgb(87,98,143)";
+    case "D":
+      return "rgb(103,226,118)";
+    case "E":
+      return "rgb(244,228,82)";
+    case "F":
+      return "rgb(247,138,90)";
+    case "G":
+      return "rgb(84,129,173)";
+    case "H":
+      return "rgb(186,185,185)";
+    case "I":
+      return "rgb(79,184,157)";
+    case "J":
+      return "rgb(150,211,255)";
     default:
       return "gray";
   }
@@ -202,8 +279,34 @@ const getStatusColor = (status: string) => {
   switch (status) {
     case "Accepted":
       return "green";
+    case "Compilation Error":
+      return "red";
+    case "Memory Limit Exceeded":
+      return "blue";
+    case "Output Limit Exceeded":
+      return "purple";
+    case "Runtime Error":
+      return "orange";
+    case "Time Limit Exceeded":
+      return "teal";
+    case "Wrong Answer":
+      return "brown";
+    default:
+      return "black";
   }
 };
+
+const goToDetail = (detailId: string) => {  
+  // 使用router.push来导航到/detail路由，并传递查询参数  
+  router.push({  
+    path: '/detail',  
+    query: {  
+      detail: detailId // 这里传递的是detailId参数  
+    }  
+  });  
+  console.log("跳转detail页面");
+}; 
+  
 </script>
 
 <style scoped>

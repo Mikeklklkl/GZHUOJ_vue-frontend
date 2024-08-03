@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import HomePage from '../pages/home/HomePage.vue';
+import component from 'element-plus/es/components/tree-select/src/tree-select-option.mjs';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -26,46 +27,52 @@ const routes: Array<RouteRecordRaw> = [
     ]
   },
   {
-    path:'/competition',
-    name:'competition',
-    component:()=>import('../pages/competition/Competition.vue'),
+    path: '/competition',
+    name: 'competition',
+    component: () => import('../pages/competition/Competition.vue'),
 
   },
   {
-    path:'/commit',
-    name:'commit',
-    component:()=>import('../pages/commit/Commit.vue')
+    path: '/commit',
+    name: 'commit',
+    component: () => import('../pages/commit/Commit.vue'),
+
+  },
+  {
+    path:'/detail',
+    name:'detail',
+    component:()=>import('../pages/detail/Detail.vue'),
   },
   {
     path: '/manage',
     name: 'manage',
     component: () => import('../pages/manage/Manage.vue'),
-    children:[
+    children: [
       {
-        path:'userlist',
-        name:'userlist',
-        component:()=>import("../pages/manage/user/userlist/UserList.vue")
+        path: 'userlist',
+        name: 'userlist',
+        component: () => import("../pages/manage/user/userlist/UserList.vue")
       },
       {
-        path:'articlelist',
-        name:'articlelist',
-        component:()=>import("../pages/manage/article/articlelist/ArticleList.vue")
+        path: 'articlelist',
+        name: 'articlelist',
+        component: () => import("../pages/manage/article/articlelist/ArticleList.vue")
       },
       {
-        path:'usergenerator',
-        name:'usergenerator',
-        component:()=>import("../pages/manage/user/usergenerator/UserGenerator.vue")
+        path: 'usergenerator',
+        name: 'usergenerator',
+        component: () => import("../pages/manage/user/usergenerator/UserGenerator.vue")
       },
       {
-        path:'problemadd',
-        name:'problemadd',
-        component:()=>import("../pages/manage/problem/problemadd/ProblemAdd.vue")
+        path: 'problemadd',
+        name: 'problemadd',
+        component: () => import("../pages/manage/problem/problemadd/ProblemAdd.vue")
       },
 
       {
-        path:'problemlist',
-        name:'problemlist',
-        component:()=>import("../pages/manage/problem/problemlist/ProblemList.vue")
+        path: 'problemlist',
+        name: 'problemlist',
+        component: () => import("../pages/manage/problem/problemlist/ProblemList.vue")
       }
     ]
   },
