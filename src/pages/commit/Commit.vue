@@ -1,12 +1,28 @@
 <template>
   <div style="padding: 30px">
     <el-row :gutter="20">
-      <el-col :span="7">
+      <el-col :span="5">
+        <!--这里是题目的选择，但需要和后端拿数据就没显示-->
+        <el-select
+          v-model="teamValue"
+          placeholder="problem"
+          size="large"
+          style="width: 200px"
+        >
+          <el-option
+            v-for="item in team_options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
+        </el-select>
+      </el-col>
+      <el-col :span="5">
         <el-select
           v-model="schoolValue"
           placeholder="School"
           size="large"
-          style="width: 240px"
+          style="width: 200px"
         >
           <el-option
             v-for="item in school_options"
@@ -17,12 +33,12 @@
         </el-select>
       </el-col>
 
-      <el-col :span="7">
+      <el-col :span="5">
         <el-select
           v-model="teamValue"
           placeholder="Team"
           size="large"
-          style="width: 240px"
+          style="width: 200px"
         >
           <el-option
             v-for="item in team_options"
@@ -33,12 +49,12 @@
         </el-select>
       </el-col>
 
-      <el-col :span="7">
+      <el-col :span="5">
         <el-select
           v-model="statusValue"
           placeholder="Status"
           size="large"
-          style="width: 240px"
+          style="width: 200px"
         >
           <template #default="{ item, index }">
             <el-option
@@ -296,17 +312,16 @@ const getStatusColor = (status: string) => {
   }
 };
 
-const goToDetail = (detailId: string) => {  
-  // 使用router.push来导航到/detail路由，并传递查询参数  
-  router.push({  
-    path: '/detail',  
-    query: {  
-      detail: detailId // 这里传递的是detailId参数  
-    }  
-  });  
+const goToDetail = (detailId: string) => {
+  // 使用router.push来导航到/detail路由，并传递查询参数
+  router.push({
+    path: "/detail",
+    query: {
+      detail: detailId, // 这里传递的是detailId参数
+    },
+  });
   console.log("跳转detail页面");
-}; 
-  
+};
 </script>
 
 <style scoped>

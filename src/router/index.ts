@@ -33,6 +33,11 @@ const routes: Array<RouteRecordRaw> = [
 
   },
   {
+    path:'/competition/detail',
+    name:'competition_detail',
+    component:()=>import('../pages/competitiondetail/CompetitionDetail.vue')
+  },
+  {
     path: '/commit',
     name: 'commit',
     component: () => import('../pages/commit/Commit.vue'),

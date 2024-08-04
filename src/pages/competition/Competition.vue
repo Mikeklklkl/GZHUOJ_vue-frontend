@@ -1,17 +1,18 @@
 <!--比赛界面。放各种比赛的跳转页面-->
 <template>
-  <div style="height: 8%">
-    <el-card>
+<div style="background-color:rgb(255,255,255)">
+  <div style="height: 8%;padding:20px">
+
       <el-input
         v-model="input"
         style="width: 240px"
         placeholder="请输入ID"
         clearable
       />
-    </el-card>
+
   </div>
 
-  <div>
+  <div style="padding:20px">
     <el-table :data="tableData" border stripe style="width: 100%">
       <el-table-column prop="id" label="ID" />
       <el-table-column prop="title" label="Title" />
@@ -21,7 +22,7 @@
       <el-table-column prop="type" label="Type"/>
     </el-table>
   </div>
-
+</div>
 </template>
 
 <script lang="ts" setup>
