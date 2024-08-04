@@ -1,5 +1,38 @@
+<script setup>
+  import {ref, onMounted} from 'vue'
+  import MdEditor from '@/components/MdEditor.vue'
+  const problemTitle = ref(' ')
+  const timeLimit = ref(1)
+  const memoryLimit = ref(1)
+  const description = ref('zzzz')
+  const inputDescription = ref('zzzzzzz')
+  const outputDescription = ref('zzzzz')
+  const samples = ref( [
+    {
+      id: 0,
+      input: '',
+      output: ''
+    }
+  ])
+  const author = ref('')
+  // 0 common judge, 1 special judge
+  const judgeType = ref(0)
+
+  // 定义每一个组件绑定的实例
+  const descriptionEditor = ref(null)
+  const inputDescriptionEditor = ref(null)
+  const outputDescriptionEditor = ref(null)
+
+  const clickAddProblem = () => {
+    descriptionEditor.value.setValue("自律旭明，一天十个接口！！！！");
+    console.log(descriptionEditor.value.getContent())
+  }
+  
+</script>
+
 <template>
-  <div style="background-color: rgb(250,250,250)">
+  <div style="background-color: rgb(100,100,100)">
+
     <el-card padding>
     <div style="padding-top: 20px; padding-left: 20px">
       <el-text style="font-size: 25px"> Add Problem </el-text>
@@ -7,105 +40,77 @@
     <!--下面的文本都还没进行数据绑定，需要ref('')来定义变量-->
     <div>
       <div class="card">
-        <el-text> Co-editor: </el-text>
-      </div>
-      <div class="card">
-        <el-input
-          v-model="input"
-          style="width: 100%"
-          placeholder="Split with ,Like:user1,uesr2...At most 6 eo-editors"
-          clearable
-        />
-      </div>
-    </div>
-    <div>
-      <div class="card">
         <el-text> Problem Title: </el-text>
       </div>
       <div class="card">
         <el-input
-          v-model="input"
-          style="width: 100%"
-          placeholder="Problem Title..."
+          v-model="problemTitle"
+          style="width: 25%"
+          placeholder=""
           clearable
         />
       </div>
     </div>
+    <!-- 时间限制 -->
     <div>
       <div class="card">
         <el-text> Time Limits(S): </el-text>
       </div>
       <div class="card">
         <el-input
-          v-model="input"
-          style="width: 100%"
-          placeholder="1"
+          v-model="timeLimit"
+          style="width: 15%"
+          placeholder="2"
           clearable
         />
       </div>
     </div>
+    <!-- 空间限制 -->
     <div>
       <div class="card">
-        <el-text> Memory Limit(MByte): </el-text>
+        <el-text> Memory Limit(MB): </el-text>
       </div>
       <div class="card">
         <el-input
-          v-model="input"
-          style="width: 100%"
-          placeholder="128"
+          v-model="memoryLimit"
+          style="width: 15%"
+          placeholder="512"
           clearable
         />
       </div>
     </div>
+    <!-- 题目描述 -->
     <div>
       <div class="card">
-        <el-text> Description(markdown): </el-text>
+        <el-text> Description:</el-text>
       </div>
       <div class="card">
-        <el-input
-          v-model="input"
-          style="width: 100%"
-          placeholder="Description..."
-          :rows="5"
-          type="textarea"
-          clearable
-        />
+        <MdEditor ref="descriptionEditor" v-model="description" name="problem content description" id="1"></MdEditor>
       </div>
     </div>
+    <!-- 输入描述 -->
     <div>
       <div class="card">
-        <el-text> Input Description (markdown): </el-text>
+        <el-text> Input Description: </el-text>
       </div>
       <div class="card">
-        <el-input
-          v-model="input"
-          style="width: 100%"
-          placeholder="Input Description:"
-          :rows="5"
-          type="textarea"
-          clearable
-        />
-      </div>
-    </div>
-    <div>
-      <div class="card">
-        <el-text> Output Description (markdown): </el-text>
-      </div>
-      <div class="card">
-        <el-input
-          v-model="input"
-          style="width: 100%"
-          placeholder="Output Description..."
-          :rows="5"
-          type="textarea"
-          clearable
-        />
-      </div>
+        <MdEditor ref="inputDescriptionEditor" v-model="inputDescription" name="input description" id="2"></MdEditor>
     </div>
 
+    </div>
+    <!-- 输出描述 -->
     <div>
       <div class="card">
-        <el-text> Samples(not test data): </el-text>
+        <el-text> Output Description: </el-text>
+      </div>
+      <div class="card">
+        <MdEditor ref="outputDescriptionEditor" v-model="outputDescription" name="output description" id="3"></MdEditor>
+      </div>
+    </div>
+    <!-- 样例 -->
+    <div>
+      <div class="card">
+        <el-text> Samples: </el-text>
         <el-button type="primary" style="width: 30px"
           ><el-icon><Plus /></el-icon
         ></el-button>
@@ -185,65 +190,35 @@
         </div>
       </div>
     </div>
-
-    <div>
-      <div class="card">
-        <el-text>Hint (markdown):</el-text>
-      </div>
-      <div class="card">
-        <el-input
-          v-model="input"
-          style="width: 100%"
-          placeholder="Hint:"
-          :rows="5"
-          type="textarea"
-          clearable
-        />
-      </div>
-    </div>
-    <div>
-      <div class="card">
-        <el-text> Source (markdown): </el-text>
-      </div>
-      <div class="card">
-        <el-input
-          v-model="input"
-          style="width: 100%"
-          placeholder="Source..."
-          clearable
-        />
-      </div>
-    </div>
+    <!-- 作者 -->
     <div>
       <div class="card">
         <el-text> Author: </el-text>
       </div>
       <div class="card">
         <el-input
-          v-model="input"
-          style="width: 100%"
+          v-model="author"
+          style="width: 20%"
           placeholder="Author..."
           clearable
         />
       </div>
     </div>
+    <!-- 题目类型选择 -->
     <div>
       <div class="my-2 ml-4">
-        <el-radio-group v-model="radio2">
-          <el-radio value="1">Option 1</el-radio>
-          <el-radio value="2">Option 2</el-radio>
+        <el-radio-group v-model="judgeType">
+          <el-radio value="1">common judge</el-radio>
+          <el-radio value="2">special judge</el-radio>
         </el-radio-group>
       </div>
       <div class="card" style="padding-bottom: 50px">
-        <el-button type="primary">Add Problem</el-button>
-      </div>
+        <el-button type="primary" @click="clickAddProblem">Add Problem</el-button>
+    </div>
     </div>
     </el-card>
   </div>
 </template>
-
-<script lang="ts" setup>
-</script>
 
 <style>
 .card {
@@ -256,5 +231,5 @@
   flex-direction: column; 
   justify-content: center; 
   align-items: center;
-  }
+}
 </style>

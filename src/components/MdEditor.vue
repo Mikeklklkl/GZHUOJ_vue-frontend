@@ -1,18 +1,63 @@
 <script setup>
-// 1.1 引入Vditor 构造函数
+// 引入Vditor 构造函数
 import Vditor from 'vditor'
-// 1.2 引入样式
+// 引入样式
 import 'vditor/dist/index.css';
-import { ref, onMounted } from 'vue';
+import {defineExpose, ref, defineProps, onMounted, watch } from 'vue';
+
+// 定义独立的props
+const props = defineProps({
+  id: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+})
+
+
+//获取DOM引用
+const editorId = ref(props.id)
+const vditor = ref(null)
+
+watch(() => props.modelValue, (newValue) => {
+  if(vditor.value && vditor.value.getValue() != newValue){
+    vditor.value.setValue(newValue || '')
+  }
+})
+
+const getContent = () => {
+  if(vditor.value) {
+    return vditor.value.getValue()
+  }
+}
+const getHtml = () => {
+  if(vditor.value){
+    return vditor.value.getHtml()
+  }
+}
+const htmlToMarkdown = (value) =>{
+  if(vditor.value){
+    return vditor.value.html2md(value)
+  }
+}
+const setValue = (str) =>{
+  if(vditor.value){
+    vditor.value.setValue(str); 
+  }
+} 
+
+defineExpose({ getContent, getHtml, htmlToMarkdown, setValue});
+
  
-// 2. 获取DOM引用
-const vditor = ref()
- 
-// 3. 在组件初始化时，就创建Vditor对象，并引用
+//在组件初始化时，就创建Vditor对象，并引用
 onMounted(() => {
-  vditor.value = new Vditor('vditor',{
-    height: '80vh',
+  vditor.value = new Vditor(editorId.value,{
+    height: '50vh',
     width: '50vw',
+    // 键入事件
     toolbar:[
         "emoji",
         "headings",
@@ -64,5 +109,7 @@ onMounted(() => {
  
 <template>
   <!-- 指定一个容器 -->
-  <div id="vditor"></div>
+  <div :id="editorId"></div>
+  <!-- <div id="vditor"></div> -->
+  <div> </div>
 </template>
