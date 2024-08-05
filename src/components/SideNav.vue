@@ -95,7 +95,7 @@ const url =
 const router = useRouter();
 
 const goToQuestion = () => {
-  router.push({ name: "qusetion" });
+  router.push({ name: "question" });
   console.log("跳转到question");
 };
 
