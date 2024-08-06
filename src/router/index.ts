@@ -68,6 +68,12 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("../pages/manage/article/articlelist/ArticleList.vue")
       },
       {
+        path:'articleadd',
+        name:'articleadd',
+        component:()=>import("../pages/manage/article/articleadd/ArticleAdd.vue")
+
+      },
+      {
         path: 'usergenerator',
         name: 'usergenerator',
         component: () => import("../pages/manage/user/usergenerator/UserGenerator.vue")

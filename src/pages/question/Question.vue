@@ -1,19 +1,20 @@
 <template>
-  <div style="height: 8%">
-    <el-card>
+  <div style="height: 8% ;padding:20px">
+
       <el-input
         v-model="input"
         style="width: 240px"
         placeholder="请输入ID"
         clearable
       />
-    </el-card>
   </div>
+  <div style="padding-left:20px;">
     <el-table :data="tableData" style="width: 100%; height: 92%">
       <el-table-column prop="date" label="ID" width="180" />
       <el-table-column prop="name" label="Name" width="180" />
       <el-table-column prop="address" label="Address" />
     </el-table>
+  </div>
 </template>
 
 

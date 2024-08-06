@@ -8,7 +8,7 @@
     <el-sub-menu index="1">
       <template #title>Article</template>
       <el-menu-item index="1-1" @click="goToArticleList">Article List</el-menu-item>
-      <el-menu-item index="1-2">Article Add</el-menu-item>
+      <el-menu-item index="1-2" @click="goToArticleAdd">Article Add</el-menu-item>
       <el-menu-item index="1-3">Carousel</el-menu-item>
       <el-menu-item index="1-4">About us</el-menu-item>
     </el-sub-menu>
@@ -40,6 +40,10 @@ const goToUesrList = () => {
 const goToArticleList = () => {
   router.push({ name: "articlelist" });
   console.log("跳转到articlelist");
+};
+const goToArticleAdd = () => {
+  router.push({ name: "articleadd" });
+  console.log("跳转到articleadd");
 };
 const goToUserGenerator = () => {
   router.push({ name: "usergenerator" });
