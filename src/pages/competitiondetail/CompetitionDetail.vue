@@ -7,7 +7,13 @@
       style="width: 100%"
       :row-class-name="tableRowClassName"
     >
-      <el-table-column prop="problems" label="Problems" width="100" />
+      <el-table-column prop="problems" label="Problems" width="100">
+        <template v-slot="scope">
+          <div @dblclick="goToSubmit(scope.row.id)">
+            {{ scope.row.id }}
+          </div>
+        </template>
+      </el-table-column>
       <el-table-column prop="name" label="Name" width="700" />
       <el-table-column prop="commitnum" label="CommitNumber" />
     </el-table>
@@ -15,11 +21,16 @@
 </template>
 
 <script lang="ts" setup>
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
 interface User {
   problems: string;
   name: string;
   commitnum: string;
   commit: string;
+  id: string;
 }
 
 const tableRowClassName = ({
@@ -30,7 +41,7 @@ const tableRowClassName = ({
   rowIndex: number;
 }) => {
   if (row.commit === "1") {
-    return "success-row"; 
+    return "success-row";
   } else if (row.commit === "2") {
     return "warning-row";
   }
@@ -44,38 +55,55 @@ const tableData: User[] = [
     name: "Cool, It's Yesterday Four Times More",
     commitnum: "500",
     commit: "1",
+    id: "1000",
   },
   {
     problems: "A",
     name: "Cool, It's Yesterday Four Times More",
     commitnum: "500",
     commit: "1",
+    id: "1000",
   },
   {
     problems: "A",
     name: "Cool, It's Yesterday Four Times More",
     commitnum: "500",
     commit: "1",
+    id: "1000",
   },
   {
     problems: "A",
     name: "Cool, It's Yesterday Four Times More",
     commitnum: "500",
     commit: "1",
+    id: "1000",
   },
   {
     problems: "A",
     name: "Cool, It's Yesterday Four Times More",
     commitnum: "500",
     commit: "1",
+    id: "1000",
   },
   {
     problems: "A",
     name: "Cool, It's Yesterday Four Times More",
     commitnum: "500",
     commit: "1",
+    id: "1000",
   },
 ];
+
+const goToSubmit = (id: string) => {
+  // 使用router.push来导航到/detail路由，并传递查询参数
+  router.push({
+    name: "commit_submit",
+    query: {
+      id: id, // 这里传递的是detailId参数
+    },
+  });
+  console.log("跳转到commit_submit");
+};
 </script>
 
 <style scoped>
