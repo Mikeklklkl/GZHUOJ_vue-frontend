@@ -1,5 +1,5 @@
 {
-    "url": "http://localhost:8080/api/gzhuoj",
-    "webSocket": "ws://localhost:8080//webSocket/"
+    "url": "http://localhost:8080/api",
+    "webSocket": "ws://localhost:8080//webSocket"
 }
   

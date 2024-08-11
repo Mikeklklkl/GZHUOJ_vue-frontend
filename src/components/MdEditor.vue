@@ -22,20 +22,20 @@ const props = defineProps({
 const editorId = ref(props.id)
 const vditor = ref(null)
 
-watch(() => props.modelValue, (newValue) => {
-  if(vditor.value && vditor.value.getValue() != newValue){
-    vditor.value.setValue(newValue || '')
-  }
-})
+// watch(() => props.modelValue, (newValue) => {
+//   if(vditor.value && vditor.value.getValue() != newValue){
+//     vditor.value.setValue(newValue || '')
+//   }
+// })
 
 const getContent = () => {
   if(vditor.value) {
     return vditor.value.getValue()
   }
 }
-const getHtml = () => {
+const getHTML = () => {
   if(vditor.value){
-    return vditor.value.getHtml()
+    return vditor.value.getHTML()
   }
 }
 const htmlToMarkdown = (value) =>{
@@ -44,12 +44,13 @@ const htmlToMarkdown = (value) =>{
   }
 }
 const setValue = (str) =>{
+  console.log(str)
   if(vditor.value){
     vditor.value.setValue(str); 
   }
 } 
 
-defineExpose({ getContent, getHtml, htmlToMarkdown, setValue});
+defineExpose({ getContent, getHTML, htmlToMarkdown, setValue});
 
  
 //在组件初始化时，就创建Vditor对象，并引用
