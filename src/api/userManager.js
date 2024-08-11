@@ -1,6 +1,6 @@
 import axios from '@/utils/axios.js'
 
-export const userManagerListService = async ({search, currentPage, pageSize}) => axios.get('/admin/userManager/userList', {
+export const userManagerListService = async ({search, currentPage, pageSize}) => axios.get('/gzhuoj-user/admin/userManager/userList', {
     params: {
         search: search,
         current: currentPage,
