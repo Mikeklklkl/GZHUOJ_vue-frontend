@@ -7,3 +7,7 @@ export const userManagerListService = async ({search, currentPage, pageSize}) =>
         size: pageSize
     }
 });
+
+export const userDelByUserAccount = async(userAccount) => axios.post('/gzhuoj-user/admin/usermanager/delete', {
+    userAccount: userAccount
+});
