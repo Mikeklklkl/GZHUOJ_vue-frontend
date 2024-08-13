@@ -1,66 +1,112 @@
 <script setup>
-import {ref} from 'vue'
-import {userLoginService} from '@/api/auth.js'
-import { userInfoStore } from '@/stores/userInfoStore';
-import { useRouter } from 'vue-router';
+import { ref } from "vue";
+import { userLoginService } from "@/api/auth.js";
+import { userInfoStore } from "@/stores/userInfoStore";
+import { useRouter } from "vue-router";
 
 const userInfo = userInfoStore();
 const router = useRouter();
+const remember = ref(false);
+const radio1 = ref("1");
 
 const formModel = ref({
-  userAccount:  '',
-  password: ''
+  userAccount: "",
+  password: "",
 });
 
 const login = async () => {
-  console.log(formModel.value)
-  const res = await userLoginService(formModel.value)
+  console.log(formModel.value);
+  const res = await userLoginService(formModel.value);
   // console.log("token222" , res.headers['token'])
-  userInfo.setToken(res.headers['token'])
+  userInfo.setToken(res.headers["token"]);
   // console.log("token111" , userInfo.token)
-  userInfo.setUserAccount(res.data.userAccount)
-  userInfo.setUserName(res.data.userName)
-  
-  router.push('/home')
-  ElMessage.success("登录成功")
+  userInfo.setUserAccount(res.data.userAccount);
+  userInfo.setUserName(res.data.userName);
+
+  router.push("/home");
+  ElMessage.success("登录成功");
 };
 </script>
+<template>
+  <div class="centered-container">
+    <div class="box">
+      <div>
+        <h1 class="va-h1">Log in</h1>
+      </div>
 
-<template >
-  <el-card style="width:100%" class="center-container" >
-    <div>
-      <h1 class="va-h1 text-center">Login</h1>
+      <div class="signup-container">
+        <h4>New to GZHUOJ ?</h4>
+
+        <h4>
+          <el-link type="primary"> Sign up</el-link>
+        </h4>
+      </div>
+
+      <div style="padding-top: 5px">
+        <el-text class="mx-1" size="small">user</el-text>
+      </div>
+
+      <div style="margin-top: 6px">
+        <el-input
+          v-model="formModel.userAccount"
+          style="width: 400px"
+          placeholder=""
+        />
+      </div>
+
+      <div style="padding-top: 5px">
+        <el-text class="mx-1" size="small">password</el-text>
+      </div>
+      <div style="margin-top: 6px">
+        <el-input
+          v-model="formModel.password"
+          style="width: 400px"
+          type="password"
+          placeholder=""
+          show-password
+        />
+      </div>
+
+      <div>
+        <el-radio-group v-model="radio1">
+          <el-radio value="1" size="large">小组</el-radio>
+          <el-radio value="2" size="large"> 个人</el-radio>
+        </el-radio-group>
+      </div>
+
+      <div class="signup-container">
+        <el-checkbox
+          v-model="remember"
+          label="Keep me signed in on this device"
+          size="large"
+        />
+        <el-link type="primary">Forgot password?</el-link>
+      </div>
+      <div>
+       <el-button style="width:400px" type="primary" @click="login">登录</el-button>
+       </div>
     </div>
-    <div class="center">
-      <el-form :model="formModel" label-width="auto">
-        <el-form-item label="Account"  label-size="large">
-          <el-input v-model="formModel.userAccount" clearable />
-        </el-form-item>
-        <el-form-item label="password">
-          <el-input v-model="formModel.password" type="password" />
-        </el-form-item>
-      </el-form>
-    </div>
-    <div style="margin-bottom:50px;">
-        <el-button type="primary" round @click="login">登录</el-button>
-        <!-- <el-button type="primary" round @click="register">注册</el-button> -->
-    </div>
-  </el-card>
+  </div>
 </template>
 
-
 <style scoped>
-.center-container {
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh; /* 使容器的高度等于视窗高度 */
+}
+
+.box {
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 垂直居中 */
-  align-items: center; /* 水平居中 */
-  height: 100vh; /* 设置容器高度为视口高度 */
-  text-align: center; /* 文本居中 */
+  align-items: flex-start;
 }
-.center {
+
+.signup-container {
   display: flex;
-  justify-content: center; /* 水平居中 */
-  margin: 40px; /* 设置元素之间的间距 */
+  align-items: center;
+  gap: 20px; /* 控制两个h4之间的间距 */
 }
 </style>

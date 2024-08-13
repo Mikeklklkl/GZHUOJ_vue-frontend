@@ -16,7 +16,10 @@
    code  
    SDD44D
    {
-    
+    adsasd
+   }
+   int main{
+
    }
 }  
 
@@ -77,7 +80,13 @@
     </div>
 
     <div style="margin: 20px; background-color: rgb(190, 190, 190)">
-      <el-text style="padding: 20px"> 错误信息 </el-text>
+      <el-text style="padding: 20px"> Main.cpp: In function ‘int main()’:
+Main.cpp:12:9: warning: unused variable ‘ans’ [-Wunused-variable]
+   12 |     int ans=0;
+      |         ^~~
+Main.cpp:10:32: warning: ignoring return value of ‘int scanf(const char*, ...)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   10 |     for(int i=1;i<=n;i++) scanf("%d%d",&a[i],&b[i]);
+      |                           ~~~~~^~~~~~~~~~~~~~~~~~~~ </el-text>
     </div>
 
     <div style="padding: 20px">
