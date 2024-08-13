@@ -3,9 +3,11 @@
     <el-container style="height: 100vh" >
 
       <!--侧边栏-->
+      <!--如果想实现必须登录才能够看到侧边栏的话，我有一个想法默认isShow为false，然后定义一个变量，来限制收缩栏的按钮，登录就能看到，这样子应该可以-->
       <el-aside width="200px" v-show="isShow" style="background-color:rgb(250,250,250);">
         <SideNav @click="toggleShow" />
       </el-aside>
+
       <!--主要内容-->
       <el-container style="background-color:rgb(255,255,255)">
         <el-main style="padding: 0">
