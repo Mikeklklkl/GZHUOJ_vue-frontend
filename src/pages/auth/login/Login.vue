@@ -1,29 +1,37 @@
 <script setup>
 import { ref } from "vue";
-import { userLoginService } from "@/api/auth.js";
+import { teamLoginService, userLoginService } from "@/api/auth.js";
 import { userInfoStore } from "@/stores/userInfoStore";
 import { useRouter } from "vue-router";
 
 const userInfo = userInfoStore();
 const router = useRouter();
 const remember = ref(false);
-const radio1 = ref("1");
+const loginType = ref("1");
 
 const formModel = ref({
-  userAccount: "",
+  Account: "",
   password: "",
 });
 
+
 const login = async () => {
   console.log(formModel.value);
-  const res = await userLoginService(formModel.value);
-  // console.log("token222" , res.headers['token'])
-  userInfo.setToken(res.headers["token"]);
-  // console.log("token111" , userInfo.token)
-  userInfo.setUserAccount(res.data.userAccount);
-  userInfo.setUserName(res.data.userName);
 
-  router.push("/home");
+  if(loginType.value == 1){
+    const res = await userLoginService(formModel.value);
+    userInfo.setToken(res.headers["token"]);
+    userInfo.setUserAccount(res.data.userAccount);
+    userInfo.setUserName(res.data.userName);
+    router.push("/home");
+  }else{
+    const res = await teamLoginService(formModel.value);
+    userInfo.setToken(res.headers["token"]);
+    userInfo.setTeamAccount(res.data.userAccount);
+    userInfo.setTeamName(res.data.userName);
+    // TODO 可能重定向的方向有点不一样
+    router.push("/home");
+  }
   ElMessage.success("登录成功");
 };
 </script>
@@ -48,7 +56,7 @@ const login = async () => {
 
       <div style="margin-top: 6px">
         <el-input
-          v-model="formModel.userAccount"
+          v-model="formModel.Account"
           style="width: 400px"
           placeholder=""
         />
@@ -68,9 +76,9 @@ const login = async () => {
       </div>
 
       <div>
-        <el-radio-group v-model="radio1">
-          <el-radio value="1" size="large">小组</el-radio>
-          <el-radio value="2" size="large"> 个人</el-radio>
+        <el-radio-group v-model="loginType">
+          <el-radio value="1" size="large">个人</el-radio>
+          <el-radio value="2" size="large"> 队伍</el-radio>
         </el-radio-group>
       </div>
 

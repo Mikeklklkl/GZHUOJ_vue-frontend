@@ -1,5 +1,5 @@
 import {defineStore} from 'pinia'
-import {ref} from 'vue'
+import {reactive, ref} from 'vue'
 
 export const userInfoStore = defineStore('userInfo', () =>{
     // 鉴权
@@ -11,7 +11,7 @@ export const userInfoStore = defineStore('userInfo', () =>{
         token.value = ''
     }
     
-    // 用户常用公开信息维护
+    // 个人用户常用公开信息维护
     const userAccount = ref('')
     const userName = ref('')
     const setUserAccount = (newAccount: string) => {
@@ -27,10 +27,33 @@ export const userInfoStore = defineStore('userInfo', () =>{
         userName.value = ''
     }
 
+    // 用户角色： 0 普通用户， 1 管理员 ， 2 超级管理员 ， 3 比赛团队
+    const userType = ref(0)
+
+
+    // 团队用户常用公开信息维护
+    const teamAccount = ref('')
+    const teamName = ref('')
+    const setTeamAccount = (newAccount: string) => {
+        teamAccount.value = newAccount
+    }
+    const resetTeamAccount = () => {
+        teamAccount.value = '';
+    }
+    const setTeamName = (newUserName: string) => {
+        teamName.value = newUserName
+    }
+    const resetTeamName = () => {
+        teamName.value = ''
+    }
+
     return {
         token, setToken , clearToken,
         userAccount , userName, 
         setUserAccount, resetUserAccount,
-        setUserName, resetUserName
+        setUserName, resetUserName,
+        teamAccount, teamName,
+        setTeamAccount, setTeamName,
+        resetTeamAccount, resetTeamName
     }
 })
