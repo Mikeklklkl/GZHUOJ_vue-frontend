@@ -1,5 +1,10 @@
 <template>
   <div style="padding: 30px">
+    <div style="padding-bottom:20px;padding-left:10px;">
+    <TopNavFour/>
+  </div>
+
+
     <el-row :gutter="20">
       <el-col :span="5">
         <!--这里是题目的选择，但需要和后端拿数据就没显示-->
@@ -135,6 +140,8 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+
+import TopNavFour from "../../components/TopNavFour.vue";
 
 const schoolValue = ref("");
 const teamValue = ref("");

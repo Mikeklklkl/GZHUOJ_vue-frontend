@@ -50,7 +50,7 @@ const login = async () => {
         <el-input
           v-model="formModel.userAccount"
           style="width: 400px"
-          placeholder=""
+   
         />
       </div>
 
@@ -62,7 +62,7 @@ const login = async () => {
           v-model="formModel.password"
           style="width: 400px"
           type="password"
-          placeholder=""
+
           show-password
         />
       </div>
