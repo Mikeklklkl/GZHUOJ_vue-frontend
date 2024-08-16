@@ -1,6 +1,12 @@
 <!--比赛界面。放各种比赛的跳转页面-->
 <template>
 <div style="background-color:rgb(255,255,255)">
+  
+  <div style="padding-top:40px;padding-left:20px;">
+    <TopNavFour/>
+  </div>
+
+
   <div style="height: 8%;padding:20px">
 
       <el-input
@@ -34,7 +40,7 @@
 
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-
+import TopNavFour from "../../components/TopNavFour.vue";
 
 const router = useRouter();
 
