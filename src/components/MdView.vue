@@ -7,7 +7,7 @@
 <script setup>
   import 'vditor/dist/index.css';
   import Vditor from 'vditor';
-  import {defineProps, onMounted} from 'vue';
+  import {defineProps, onMounted, nextTick, ref , watch} from 'vue';
 
   const props = defineProps({
     htmlValue: {
@@ -16,10 +16,12 @@
         default: ''
     }
   })
+  const preview = ref(null)
 
 
-onMounted(() =>{
-    const previewElement = document.querySelector('.vditor-reset');
+const renderVditorContent =  () =>{
+  const previewElement = preview.value;
+  if(previewElement == null) return;
 //       previewElement.innerHTML = `<div class="language-math">f_1 = 1</div>
 // <pre><code class="language-cpp">#include&lt;iostream&gt;
 // using namespace std;
@@ -30,10 +32,12 @@ onMounted(() =>{
 //     int t = 1;
 //     while(t--){solve(t);}
 // }
-// </code></pre>
+// </code></pre>X
 // `;
     console.log(props.htmlValue)
-    previewElement.innerHTML = props.htmlValue;
+    // previewElement.innerHTML = props.htmlValue;
+    previewElement.innerHTML = props.htmlValue; // 使用转义后的 HTML
+
 
     Vditor.setContentTheme('light', 'https://unpkg.com/vditor@3.10.4/dist/css/content-theme');
     Vditor.codeRender(previewElement);
@@ -50,9 +54,20 @@ onMounted(() =>{
     Vditor.mindmapRender(previewElement, 'https://unpkg.com/vditor@3.10.4', 'classic');
     Vditor.abcRender(previewElement, 'https://unpkg.com/vditor@3.10.4');
     Vditor.mediaRender(previewElement);
+  }
     // 定义语音包的代码。暂时用不上。
     // Vditor.speechRender(previewElement);
-    });
+
+onMounted(async () => {
+    await nextTick();
+  renderVditorContent();  // 初始渲染
+})
+
+  // 监听 props.htmlValue 的变化，并重新渲染
+watch(() => props.htmlValue, () => {
+  renderVditorContent();
+});
+
   </script>
   
   <style scoped>

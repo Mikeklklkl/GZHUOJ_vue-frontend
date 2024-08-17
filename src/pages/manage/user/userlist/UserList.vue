@@ -48,7 +48,7 @@
 
 
 <script setup>
-import {userManagerListService, userDelByUserAccount} from '@/api/userManager.js'
+import {userManagerListService, userDelByUserAccount} from '@/api/user.js'
 import { onMounted, ref } from 'vue'
 
 const search = ref('')
@@ -98,7 +98,7 @@ const singleUserEdit = async (index , row) => {
 };
 const singleUserDel = async (index , row) => {
   console.log(row.userAccount);
-  const res = userDelByUserAccount(row.userAccount);
+  const res = await userDelByUserAccount(row.userAccount);
   ElMessage({
     type: "success",
     message: "删除成功"

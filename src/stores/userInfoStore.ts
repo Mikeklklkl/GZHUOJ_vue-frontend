@@ -3,12 +3,14 @@ import {reactive, ref} from 'vue'
 
 export const userInfoStore = defineStore('userInfo', () =>{
     // 鉴权
-    const token = ref('')
+    const token = ref(localStorage.getItem('token') || null)
     const setToken = (newToken: string) => {
         token.value = newToken
+        localStorage.setItem('token', newToken);
     }
     const clearToken = () =>{
         token.value = ''
+        localStorage.removeItem('token');
     }
     
     // 个人用户常用公开信息维护

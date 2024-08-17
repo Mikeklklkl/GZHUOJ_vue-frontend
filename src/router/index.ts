@@ -16,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/question',
     name: 'question',
-    component: () => import('../pages/question/Question.vue'),
+    component: () => import('../pages/problemset/problemset.vue'),
   },
   {
     path: '/auth',
@@ -42,15 +42,15 @@ const routes: Array<RouteRecordRaw> = [
     component:()=>import('../pages/competitiondetail/CompetitionDetail.vue')
   },
   {
-    path: '/commit',
-    name: 'commit',
-    component: () => import('../pages/commit/Commit.vue'),
+    path: '/contest/problem',
+    name: 'contest-problem',
+    component: () => import('../pages/contest/problem.vue'),
 
   },
   {
     path:'/commit/submit',
     name:'commit_submit',
-    component:()=>import('../pages/commit/submit/Submit.vue')
+    component:()=>import('../pages/contest/problem.vue')
   },
   {
     path:'/detail',
