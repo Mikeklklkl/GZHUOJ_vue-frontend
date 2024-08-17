@@ -1,5 +1,7 @@
 import axios from '@/utils/axios.js'
 
+// 增加
+
 export const createProblem = async ({     
     problemTitle,
     problemNum,
@@ -33,3 +35,11 @@ export const createProblem = async ({
     author: author,
     problemType: problemType
 });
+
+
+// 查
+export const getProblemContent = async({
+    problemNum
+}) => axios.post('gzhuoj-problem/problem/get/contents', {
+    problemNum: problemNum
+})

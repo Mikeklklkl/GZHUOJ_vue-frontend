@@ -16,7 +16,8 @@
   const props = defineProps({
     editable: {
       type: Boolean,
-      required: false
+      required: false,
+      default: true
     }
   })
 
@@ -53,6 +54,8 @@
 </script>
 
 <template>
+
+
  <div>
       <br>
       <div class="card">
@@ -84,10 +87,11 @@
               </el-row>
               <el-input
                 v-model="input"
-                style="width: 100%; padding: 10px"
-                :rows="5"
+                style="width: 100%; padding: 10px; resize: none;"
                 type="textarea"
+                :rows="5"
                 clearable
+                :readonly="!props.editable"
               />
             </el-col>
             <el-col :span="11">
@@ -107,8 +111,9 @@
                 v-model="output"
                 style="width: 100%; padding: 10px"
                 :rows="5"
-                type="textarea"
                 clearable
+                type="textarea"
+                :readonly="!props.editable"
               />
             </el-col>
             <el-col :span="2">
@@ -116,19 +121,20 @@
                   <div>
                     <el-button type="success" 
                     @click="sampleUp"
+                    v-show="!editable"
                       ><el-icon><Top /></el-icon
                     ></el-button>
                   </div>
                   <div>
-                    <el-button type="danger" @click="sampleDelete" >del</el-button>
+                    <el-button type="danger" @click="sampleDelete" v-show="!editable">del</el-button>
                   </div>
                   <div>
                     <el-button type="warning"
                     @click="sampleDown"
+                    v-show="!editable"
                       ><el-icon><Bottom /></el-icon
                     ></el-button>
                   </div>
-
                 </div>
             </el-col>
           </el-row>
@@ -136,5 +142,8 @@
       </div>
     </div>
 </template>
-<style>
+<style scoped>
+.el-textarea__inner {
+  resize: none;
+}
 </style>
