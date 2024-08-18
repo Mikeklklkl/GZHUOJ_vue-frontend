@@ -1,8 +1,9 @@
 <template>
-  <div style="padding: 30px">
-    <div style="padding-bottom:20px;padding-left:10px;">
-    <TopNavFour/>
-  </div>
+ <TopNavFour/>
+  <div style="padding: 20px">
+
+   
+
 
 
     <el-row :gutter="20">

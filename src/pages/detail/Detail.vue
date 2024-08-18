@@ -1,4 +1,5 @@
 <template>
+ <TopNavFour/>
   <div>
     <div style="padding: 20px; border-bottom: 2px solid rgb(114, 114, 114)">
       <el-text style="font-size: 30px; color: black; font-weight: bold"
@@ -120,6 +121,7 @@ Main.cpp:10:32: warning: ignoring return value of ‘int scanf(const char*, ...)
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import TopNavFour from "../../components/TopNavFour.vue";
 </script>
 
 

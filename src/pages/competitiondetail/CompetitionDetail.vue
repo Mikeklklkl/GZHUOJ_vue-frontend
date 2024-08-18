@@ -1,8 +1,8 @@
 <template>
 
-   <div style="padding-top:40px;padding-left:20px;">
+ 
     <TopNavFour/>
-  </div>
+
 
   <div style="padding: 20px">
     <el-table

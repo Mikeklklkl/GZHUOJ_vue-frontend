@@ -2,9 +2,9 @@
 <template>
 <div style="background-color:rgb(255,255,255)">
   
-  <div style="padding-top:40px;padding-left:20px;">
-    <TopNavFour/>
-  </div>
+
+
+
 
 
   <div style="height: 8%;padding:20px">

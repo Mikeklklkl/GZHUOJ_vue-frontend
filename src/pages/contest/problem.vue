@@ -46,12 +46,12 @@ onMounted(() => {
 
 
 <template>
-  <el-container>
-    <el-header>
-      <div style="padding-top: 20px; padding-left: 40px">
+ 
+ 
+     
         <TopNavFour />
-      </div>
-    </el-header>
+     
+
     <el-container>
       <el-main>
         <div class="textdiv" style="display: flex; justify-content: center">
@@ -145,7 +145,7 @@ onMounted(() => {
         </div>
       </el-aside>
     </el-container>
-  </el-container>
+
 </template>
 
 

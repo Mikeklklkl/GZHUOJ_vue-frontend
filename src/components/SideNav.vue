@@ -9,7 +9,7 @@
         <el-col>
           <el-menu
             active-text-color="#ffd04b"
-            background-color="#545c64"
+            background-color="rgb(20, 55, 95)"
             text-color="#fff"
             style="border: 0"
           >
@@ -143,6 +143,13 @@ const changIsShow =()=>{
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden; /* 禁用滚动 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 .text-center {
   text-align: center; /* 水平居中 */
