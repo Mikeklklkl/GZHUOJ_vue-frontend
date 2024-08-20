@@ -1,18 +1,17 @@
 <script setup>
-import { ref , onMounted} from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import {getProblemContent} from '@/api/problem.js';
+import { getProblemContent } from "@/api/problem.js";
 
 // 保存题目内容字段
-const problemTitle = ref('最长上升子序列和')
+const problemTitle = ref("最长上升子序列和");
 
 const descriptionHtml = ref(`123213213213`);
 const inputDescriptionHtml = ref(``);
-const outputDescriptionHtml = ref(``)
-const explanationHtml =  ref(``)
+const outputDescriptionHtml = ref(``);
+const explanationHtml = ref(``);
 
 const testExamples = ref([]);
-
 
 const languageValue = ref("");
 const language_options = [
@@ -23,25 +22,19 @@ const language_options = [
   { value: "Go", label: "Go" },
 ];
 
-const getProblemContentEvent = async() => {
-  const res = (await getProblemContent({problemNum: 817})).data;
+const getProblemContentEvent = async () => {
+  const res = (await getProblemContent({ problemNum: 817 })).data;
   console.log(res);
   descriptionHtml.value = res.data.descriptionHtml;
   inputDescriptionHtml.value = res.data.inputDescriptionHtml;
-  outputDescriptionHtml.value =res.data.outputDescriptionHtml;
+  outputDescriptionHtml.value = res.data.outputDescriptionHtml;
   explanationHtml.value = res.data.explanationHtml;
   testExamples.value = res.data.testExamples;
-}
-
-
+};
 
 onMounted(() => {
   getProblemContentEvent();
-
-})
-
-
-
+});
 </script>
 
 
@@ -172,9 +165,8 @@ onMounted(() => {
   text-align: left; /* 文本左对齐，也可以根据需要设置为居中或右对齐 */
 }
 
-
 .head-text {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 16px; /* 可以根据需要调整字体大小 */
   color: black;
   line-height: 1.6; /* 行高可以调整，以增加可读性 */

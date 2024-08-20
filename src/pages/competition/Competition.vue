@@ -1,11 +1,6 @@
 <!--比赛界面。放各种比赛的跳转页面-->
 <template>
 <div style="background-color:rgb(255,255,255)">
-  
-
-
-
-
 
   <div style="height: 8%;padding:20px">
 

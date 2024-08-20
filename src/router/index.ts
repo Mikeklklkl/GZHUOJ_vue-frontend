@@ -58,6 +58,11 @@ const routes: Array<RouteRecordRaw> = [
     component:()=>import('../pages/contest/problem.vue')
   },
   {
+    path:'/commit/submit2',
+    name:'submit',
+    component:()=>import('../pages/commit/submit/Submit.vue')
+  },
+  {
     path:'/detail',
     name:'detail',
     component:()=>import('../pages/detail/Detail.vue'),
