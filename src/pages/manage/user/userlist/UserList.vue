@@ -87,7 +87,6 @@ const searchSubmit = async () =>{
     email: record.email,
     createTime: record.createTime
   }))
-  total.value = res.data.total
   total.value = res.data.data.total
   ElMessage("开始查询")
 }
