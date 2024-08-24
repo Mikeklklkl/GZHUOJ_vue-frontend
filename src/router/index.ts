@@ -1,72 +1,85 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
-import HomePage from '../pages/home/HomePage.vue';
-import component from 'element-plus/es/components/tree-select/src/tree-select-option.mjs';
 
 const routes: Array<RouteRecordRaw> = [
+
+  // 1 重定向 规则定义 
   {
     path: '/',
     redirect: '/home'
   },
-  {
-    path: '/home',
-    name: 'HomePage',
-    component: HomePage,
-  },
-  {
-    path: '/question',
-    name: 'question',
-    component: () => import('../pages/problemset/problemset.vue'),
-  },
+  // 2 权限校验
   {
     path: '/auth',
     name: 'auth',
-    component: () => import('../pages/auth/auth.vue'),
+    component: () => import('../pages/auth/Auth.vue'),
     children: [
       {
-        path: 'Login',
-        name: 'Login',
-        component: () => import('../pages/auth/login/Login.vue'),
+        path: 'login',
+        name: 'login',
+        component: () => import('../pages/auth/Login.vue'),
       }
     ]
   },
+  // 3 homepage
   {
-    path: '/competition',
-    name: 'competition',
-    component: () => import('../pages/competition/Competition.vue'),
-
+    path: '/home',
+    name: 'HomePage',
+    component: () => import('../pages/home/HomePage.vue')
+    // children: [
+    //   {
+    //     path: '/question',
+    //     name: 'question',
+    //     component: () => import('@/pages/')
+    //   }
+    // ]
   },
+  // 4. problem
   {
-    path:'/competition/detail',
-    name:'competition_detail',
-    component:()=>import('../pages/competitiondetail/CompetitionDetail.vue')
+    path: '/problem',
+    name: 'problems',
+    component: () => import('../pages/problems/ProblemSet.vue'),
   },
+  // 5 contest
+  // 5.1
   {
-    path: '/contest/problem',
+    path: '/contest',
+    name: 'contests',
+    component: () => import('../pages/contests/ContestView.vue'),
+  },
+  // 5.2.1 进入特定比赛查看比赛题目
+  {
+    path: '/contest/:contestId',
+    name: 'contest-problem-set',
+    component: () => import('../pages/contests/problem/ProblemSet.vue'),
+  },
+  // 5.2.2 进入某一道题目
+  {
+    path: '/contest/:contestId/problem/:problemId',
     name: 'contest-problem',
-    component: () => import('../pages/contest/problem.vue'),
+    component: () => import('../pages/contests/problem/Problem.vue')
+  },
+  // 5.2.2.1 查看评测列表
+  {
+    path: '/contest/:contestId/submission',
+    name: 'contest-submission-detail',
+    component: () => import('../pages/contests/judge/Submissions.vue'),
+  },
+   // 5.2.3 查看特定提交的详情
+  {
+    path: '/contest/:contestId/submission/:submissionId',
+    name: 'submissionDetail',
+    component: () => import('../pages/contests/judge/Detail.vue')
+  },
+  // 5.2.4 提交栏
+  {
+    path: '/contest/:contestId/submit',
+    name: 'submit',
+    component: () => import('../pages/contests/judge/Submit.vue')
+  },
+  // 还缺了榜单等一些东西
 
-  },
-  {
-    path:'/commit',
-    name:'commit',
-    component:()=>import('../pages/commit/Commit.vue'),
-  },
-  {
-    path:'/commit/submit',
-    name:'commit_submit',
-    component:()=>import('../pages/contest/problem.vue')
-  },
-  {
-    path:'/commit/submit2',
-    name:'submit',
-    component:()=>import('../pages/commit/submit/Submit.vue')
-  },
-  {
-    path:'/detail',
-    name:'detail',
-    component:()=>import('../pages/detail/Detail.vue'),
-  },
+  // manage模块
   {
     path: '/manage',
     name: 'manage',
@@ -75,38 +88,38 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'userlist',
         name: 'userlist',
-        component: () => import("../pages/manage/user/userlist/UserList.vue")
+        component: () => import("../pages/manage/user/UserList.vue")
       },
       {
         path: 'articlelist',
         name: 'articlelist',
-        component: () => import("../pages/manage/article/articlelist/ArticleList.vue")
+        component: () => import("../pages/manage/article/ArticleList.vue")
       },
       {
         path:'articleadd',
         name:'articleadd',
-        component:()=>import("../pages/manage/article/articleadd/ArticleAdd.vue")
+        component:()=>import("../pages/manage/article/ArticleAdd.vue")
 
       },
       {
         path: 'usergenerator',
         name: 'usergenerator',
-        component: () => import("../pages/manage/user/usergenerator/UserGenerator.vue")
+        component: () => import("../pages/manage/user/UserGenerator.vue")
       },
       {
         path: 'problemadd',
         name: 'problemadd',
-        component: () => import("../pages/manage/problem/problemadd/ProblemAdd.vue")
+        component: () => import("../pages/manage/problem/ProblemAdd.vue")
       },
 
       {
         path: 'problemlist',
         name: 'problemlist',
-        component: () => import("../pages/manage/problem/problemlist/ProblemList.vue")
+        component: () => import("../pages/manage/problem/ProblemList.vue")
       }
     ]
   },
-
+  // 404 页面
   {
     /*404页面放在最后面*/
     path: '/:pathMatch(.*)*',

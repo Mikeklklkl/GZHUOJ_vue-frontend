@@ -17,33 +17,33 @@
               <el-icon><HomeFilled /></el-icon>
               <span>主页</span>
             </el-menu-item>
-
+<!-- 
             <el-menu-item index="2" @click="goToQuestion">
               <el-icon><List /></el-icon>
               <span>开放题目集</span>
-            </el-menu-item>
+            </el-menu-item> -->
 
-            <el-menu-item index="3" @click="goToCommit">
+            <!-- <el-menu-item index="3" @click="goToCommit">
               <el-icon><Histogram /></el-icon>
               <span>提交状态</span>
-            </el-menu-item>
+            </el-menu-item> -->
 
             <el-menu-item index="4" @click="goToCompetition">
               <el-icon><Grid /></el-icon>
               <span>比赛</span>
             </el-menu-item>
-            <el-menu-item index="5">
+            <!-- <el-menu-item index="5">
               <el-icon><TrendCharts /></el-icon>
               <span>XCPC标准比赛</span>
-            </el-menu-item>
-            <el-menu-item index="7">
+            </el-menu-item> -->
+            <!-- <el-menu-item index="7">
               <el-icon><StarFilled /></el-icon>
               <span>ACM技巧</span>
-            </el-menu-item>
-            <el-menu-item index="8">
+            </el-menu-item> -->
+            <!-- <el-menu-item index="8">
               <el-icon><BellFilled /></el-icon>
               <span>常见疑问</span>
-            </el-menu-item>
+            </el-menu-item> -->
             <el-menu-item index="9" @click="goToManage">
               <el-icon><UserFilled /></el-icon>
               <span>管理页面</span>
@@ -87,7 +87,6 @@
 
 <script lang="ts" setup>
 import { useRouter } from "vue-router";
-import { defineProps } from "vue";
 
 const url =
   "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg";
@@ -105,7 +104,7 @@ const goToHomePage = () => {
 };
 
 const goToCompetition = () => {
-  router.push({ name: "competition" });
+  router.push({ name: "contests" });
   console.log("跳转到competition");
 };
 
@@ -115,7 +114,7 @@ const goToManage = () => {
 };
 
 const goToLogin = () => {
-  router.push({ name: "Login" });
+  router.push({ name: "login" });
   console.log("跳转到Login");
 };
 

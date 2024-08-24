@@ -1,9 +1,5 @@
 <template>
-
- 
     <TopNavFour/>
-
-
   <div style="padding: 20px">
     <el-table
       border
@@ -14,7 +10,7 @@
     >
       <el-table-column prop="problems" label="Problems" width="100">
         <template v-slot="scope">
-          <div @dblclick="goToSubmit(scope.row.id)">
+          <div @dblclick="goToProblemDetail(scope.row.id)">
             {{ scope.row.id }}
           </div>
         </template>
@@ -26,10 +22,14 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from "vue-router";
-import TopNavFour from "../../components/TopNavFour.vue";
+import { useRoute, useRouter } from "vue-router";
+import TopNavFour from "../../../components/TopNavFour.vue";
 
 const router = useRouter();
+const route = useRoute();
+
+const contestId = route.params.contestId;
+console.log('Current contestId:', contestId);
 
 interface User {
   problems: string;
@@ -100,12 +100,13 @@ const tableData: User[] = [
   },
 ];
 
-const goToSubmit = (id: string) => {
+const goToProblemDetail = (id: number) => {
   // 使用router.push来导航到/detail路由，并传递查询参数
   router.push({
-    name: "commit_submit",
-    query: {
-      id: id, // 这里传递的是detailId参数
+    name: "contest-problem",
+    params: {
+      contestId: contestId,
+      problemId: id, // 这里传递的是detailId参数
     },
   });
   console.log("跳转到commit_submit");

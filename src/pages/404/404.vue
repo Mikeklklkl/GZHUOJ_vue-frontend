@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import NotFound from "./components/NoFound.vue";
+import NotFound from "./NoFound.vue";
 </script>
 
 <style scoped>
