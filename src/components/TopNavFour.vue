@@ -6,20 +6,18 @@
     @select="handleSelect"
     style="  background-color:rgb(20,55,95);"
   >
-    <el-menu-item index="1" class="color" @click="goToCompetitionDetail">题目列表</el-menu-item>
-    <el-menu-item index="2" class="color" @click="goToUesrCommit">提交</el-menu-item>
-    <el-menu-item index="3" class="color" @click="goTodetail">评测列表</el-menu-item>
+    <el-menu-item index="1" class="color" @click="gotToContestProblem">题目</el-menu-item>
+    <el-menu-item index="2" class="color" @click="goToContestSubmit">提交</el-menu-item>
+    <el-menu-item index="3" class="color" @click="goToContestSubmissions">评测 </el-menu-item>
     <el-menu-item index="4" class="color" >榜单</el-menu-item>
   </el-menu>
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from "vue-router";
-
-import { ref } from 'vue'
-
+import { useRouter,useRoute} from "vue-router";
 
 const router = useRouter();
+const route = useRoute();
 
 import { inject } from 'vue';
 
@@ -27,14 +25,37 @@ import { inject } from 'vue';
 const isShow = inject('isShow');
 
 
-/*这里需要获取一下当前正在进行的比赛的id，然后才能确定跳转到哪一个比赛的题目列表
-这里只是随便定义的，后面还需要根据不同的id来展示不同的题目页面*/
 
-const goToUesrCommit = () => {
-  router.push({ name: "commit" });
+const gotToContestProblem = () => {
   isShow.value=false;
-  console.log("跳转到commit");
+  // 使用router.push来导航到/detail路由，并传递查询参数
+  router.push({
+    name: "contest-problem-set",
+    params: {
+      contestId: route.params.contestId, // 这里传递的是detailId参数
+    },
+  });
+  console.log("跳转到competition_detail");
 };
+
+const goToContestSubmit = () => {
+  router.push({ 
+    name: "submit",
+    params: {
+      contestId: route.params.contestId
+    }
+  });
+
+};
+
+const goToContestSubmissions = () =>{
+  router.push({
+    name: "contest-submission-detail",
+    params: {
+      contestId: route.params.contestId
+    }
+  })
+}
 
 const tableData = [
   {
@@ -47,25 +68,6 @@ const tableData = [
     router:"001"
   }
 ];
-
-
-const goToCompetitionDetail = (id: string) => {
-  isShow.value=false;
-  // 使用router.push来导航到/detail路由，并传递查询参数
-  router.push({
-    name: "competition_detail",
-    query: {
-      id: id, // 这里传递的是detailId参数
-    },
-  });
-  console.log("跳转到competition_detail");
-};
-
-const goTodetail = () => {
-  router.push({ name: "detail" });
-  isShow.value=false;
-  console.log("跳转到detail");
-};
 
 </script>
 

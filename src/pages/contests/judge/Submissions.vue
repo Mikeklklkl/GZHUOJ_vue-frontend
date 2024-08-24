@@ -142,7 +142,7 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
-import TopNavFour from "../../components/TopNavFour.vue";
+import TopNavFour from "../../../components/TopNavFour.vue";
 
 const schoolValue = ref("");
 const teamValue = ref("");

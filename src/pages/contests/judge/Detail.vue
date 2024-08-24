@@ -121,7 +121,7 @@ Main.cpp:10:32: warning: ignoring return value of ‘int scanf(const char*, ...)
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import TopNavFour from "../../components/TopNavFour.vue";
+import TopNavFour from "../../../components/TopNavFour.vue";
 </script>
 
 

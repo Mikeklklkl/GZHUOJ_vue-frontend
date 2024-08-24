@@ -3,26 +3,35 @@
 import { ref , onMounted} from "vue";
 import { useRouter } from "vue-router";
 import {getContestListService} from "@/api/contest.js";
-
-
+import { inject } from 'vue';
+// 路由
 const router = useRouter();
 
+// 视图控制, 侧边栏是否打开
+const sideNavShowFlag = inject('isShow')
+
+// 查询相关字段
 const search = ref('')
 const type = ref(0)
-// 排序优化
 const order = ref({})
 
+// 查询结果
 const contests = ref([])
 
+// 跳转特定比赛
 const goToCompetitionDetail = (id) => {
-  // 使用router.push来导航到/detail路由，并传递查询参数
+  sideNavShowFlag.value = false;
+  // 将侧边栏设置为关闭状态。
+  // 使用router.push来导航到/detail路由，并传递A查询参数
   router.push({
-    name: "competition_detail",
-    query: {
-      id: id, // 这里传递的是detailId参数
+    name: "contest-problem-set",
+    params: {
+      contestId: id, // 这里传递的是detailId参数
     },
-  });
-  console.log("跳转到competition_detail");
+  }).catch(err => {
+    console.error(err);
+  });;
+  console.log("跳转到比赛题目集");
 };
 
 const getContestList = async()=> {
@@ -62,7 +71,7 @@ onMounted(() =>{
 
 
 <template>
-<div style="background-color:rgb(255,255,255)">
+  <div style="background-color:rgb(255,255,255)">
 
   <div style="height: 8%;padding:20px">
       <el-input
