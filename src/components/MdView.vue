@@ -68,11 +68,11 @@ watch(() => props.htmlValue, () => {
   renderVditorContent();
 });
 
-  </script>
+</script>
   
-  <style scoped>
+<style scoped>
   .vditor-reset {
     /* 自定义样式 */
   }
-  </style>
+</style>
   

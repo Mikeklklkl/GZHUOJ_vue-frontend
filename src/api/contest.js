@@ -7,3 +7,8 @@ export const getContestListService = async ({search, type, orders, pageSize, goP
     size: pageSize,
     current: goPage
 });
+
+
+export const getContestProblemService = async ({contestId}) => axios.post('/gzhuoj-contest/regular/contest/problems', {
+    cid: contestId
+});

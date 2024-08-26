@@ -4,40 +4,44 @@
     <el-table
       border
       stripe
-      :data="tableData"
+      :data="problems"
       style="width: 100%"
       :row-class-name="tableRowClassName"
     >
-      <el-table-column prop="problems" label="Problems" width="100">
+      <el-table-column prop="problemNumStr" label="ID" width="100">
         <template v-slot="scope">
-          <div @dblclick="goToProblemDetail(scope.row.id)">
-            {{ scope.row.id }}
+          <div @dblclick="goToProblemDetail(scope.row.problemNumStr)">
+            {{ scope.row.problemNumStr }}
           </div>
         </template>
       </el-table-column>
-      <el-table-column prop="name" label="Name" width="700" />
-      <el-table-column prop="commitnum" label="CommitNumber" />
+      <el-table-column prop="title" label="Title" width="500" />
+      <el-table-column prop="limit" label="Limit" width="200">
+        <template v-slot="scope">
+          <div>
+            {{scope.row.memoryLimit + "MB" + "/" + scope.row.timeLimit + "S"}}
+          </div>
+        </template>
+      </el-table-column>
+      <el-table-column prop="accepted" label="Calculate" />
     </el-table>
   </div>
 </template>
 
+
 <script lang="ts" setup>
 import { useRoute, useRouter } from "vue-router";
-import TopNavFour from "../../../components/TopNavFour.vue";
-
+import {ref, onMounted} from 'vue'
+import {getContestProblemService} from '@/api/contest.js'
 const router = useRouter();
 const route = useRoute();
 
-const contestId = route.params.contestId;
-console.log('Current contestId:', contestId);
+onMounted(() => {
+  // 加载页面时，获取题目集
+  getContestProblemsList()
+})
 
-interface User {
-  problems: string;
-  name: string;
-  commitnum: string;
-  commit: string;
-  id: string;
-}
+// console.log('Current contestId:', contestId);
 
 const tableRowClassName = ({
   row,
@@ -55,63 +59,67 @@ const tableRowClassName = ({
   return "";
 };
 
-const tableData: User[] = [
+const problems = ref([
   {
-    problems: "A",
-    name: "Cool, It's Yesterday Four Times More",
-    commitnum: "500",
-    commit: "1",
-    id: "1000",
-  },
-  {
-    problems: "A",
-    name: "Cool, It's Yesterday Four Times More",
-    commitnum: "500",
-    commit: "1",
-    id: "1000",
-  },
-  {
-    problems: "A",
-    name: "Cool, It's Yesterday Four Times More",
-    commitnum: "500",
-    commit: "1",
-    id: "1000",
-  },
-  {
-    problems: "A",
-    name: "Cool, It's Yesterday Four Times More",
-    commitnum: "500",
-    commit: "1",
-    id: "1000",
-  },
-  {
-    problems: "A",
-    name: "Cool, It's Yesterday Four Times More",
-    commitnum: "500",
-    commit: "1",
-    id: "1000",
-  },
-  {
-    problems: "A",
-    name: "Cool, It's Yesterday Four Times More",
-    commitnum: "500",
-    commit: "1",
-    id: "1000",
-  },
-];
+    problemNumStr: "A",
+    title: "Cool, It's Yesterday Four Times More",
+    calculate: "500",
+    id: "100"
+  }
+]
+)
 
 const goToProblemDetail = (id: number) => {
   // 使用router.push来导航到/detail路由，并传递查询参数
   router.push({
     name: "contest-problem",
     params: {
-      contestId: contestId,
+      contestId: route.params.contestId,
       problemId: id, // 这里传递的是detailId参数
     },
   });
   console.log("跳转到commit_submit");
 };
+
+const getContestProblemsList = async () =>{
+  const res = (await getContestProblemService({contestId: route.params.contestId})).data;
+  problems.value = res.data.map((record: ProblemRecord) =>({
+    problemId: record.problemNum,
+    problemNum: record.actualNum,
+    problemNumStr: String.fromCharCode('A'.charCodeAt(0) + record.actualNum),
+    title: record.problemName,
+    timeLimit: record.timeLimit,
+    memoryLimit: record.memoryLimit, 
+    accepted: record.accepted,
+    AC: record.AC
+  }));
+  console.log("problems", problems.value);
+}
+
+
+
+
+// 显示声明
+interface ProblemRecord {
+  // 题目在后端全局题库中的序号
+  problemNum: number;
+  // 实际序号
+  actualNum: number;
+  // 题目标题
+  problemName: string;
+  // 时空限制
+  timeLimit: number;
+  memoryLimit: number;
+  // 通过该题的总人数
+  accepted: number;
+  // 当前选手是否已经通过该道题目
+  AC: boolean;
+}
+
+
+
 </script>
+
 
 <style scoped>
 .warning-row {
