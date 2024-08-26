@@ -19,7 +19,7 @@ const order = ref({})
 const contests = ref([])
 
 // 跳转特定比赛
-const goToCompetitionDetail = (id) => {
+const getContestDetail = (id) => {
   sideNavShowFlag.value = false;
   // 将侧边栏设置为关闭状态。
   // 使用router.push来导航到/detail路由，并传递A查询参数
@@ -35,11 +35,11 @@ const goToCompetitionDetail = (id) => {
 };
 
 const getContestList = async()=> {
-  const res = await (await getContestListService({
+  const res = (await getContestListService({
     search: search.value, 
     type: type.value, 
   })).data;
-  
+
   contests.value = res.data.records.map(record => ({
     id: record.contestId,
     title: record.title,
@@ -66,7 +66,6 @@ onMounted(() =>{
   })
 })
 
-
 </script>
 
 
@@ -87,7 +86,7 @@ onMounted(() =>{
 
       <el-table-column prop="id" label="ID" >
          <template v-slot="scope">  
-          <div @dblclick="goToCompetitionDetail(scope.row.id)">{{ scope.row.id }}</div>  
+          <div @dblclick="getContestDetail(scope.row.id)">{{ scope.row.id }}</div>  
         </template>  
       </el-table-column>
       <el-table-column prop="title" label="Title" />

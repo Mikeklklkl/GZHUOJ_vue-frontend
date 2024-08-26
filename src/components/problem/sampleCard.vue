@@ -121,17 +121,17 @@
                   <div>
                     <el-button type="success" 
                     @click="sampleUp"
-                    v-show="!editable"
+                    v-show="editable"
                       ><el-icon><Top /></el-icon
                     ></el-button>
                   </div>
                   <div>
-                    <el-button type="danger" @click="sampleDelete" v-show="!editable">del</el-button>
+                    <el-button type="danger" @click="sampleDelete" v-show="editable">del</el-button>
                   </div>
                   <div>
                     <el-button type="warning"
                     @click="sampleDown"
-                    v-show="!editable"
+                    v-show="editable"
                       ><el-icon><Bottom /></el-icon
                     ></el-button>
                   </div>
