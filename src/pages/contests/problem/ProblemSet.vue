@@ -8,10 +8,10 @@
       style="width: 100%"
       :row-class-name="tableRowClassName"
     >
-      <el-table-column prop="problemNumStr" label="ID" width="100">
+      <el-table-column prop="problemLetterInContest" label="ID" width="100">
         <template v-slot="scope">
-          <div @dblclick="goToProblemDetail(scope.row.problemNumStr)">
-            {{ scope.row.problemNumStr }}
+          <div @dblclick="goToProblemDetail(scope.row.problemLetterInContest)">
+            {{ scope.row.problemLetterInContest}}
           </div>
         </template>
       </el-table-column>
@@ -32,7 +32,9 @@
 <script lang="ts" setup>
 import { useRoute, useRouter } from "vue-router";
 import {ref, onMounted} from 'vue'
-import {getContestProblemService} from '@/api/contest.js'
+import {numberToLetter} from '@/utils/transferUtils.js'
+import {getContestProblemsService} from '@/api/contest.js'
+// import type Problem from "./Problem.vue";
 const router = useRouter();
 const route = useRoute();
 
@@ -75,18 +77,18 @@ const goToProblemDetail = (id: number) => {
     name: "contest-problem",
     params: {
       contestId: route.params.contestId,
-      problemId: id, // 这里传递的是detailId参数
+      problemLetterInContest: id, // 这里传递的是detailId参数
     },
   });
   console.log("跳转到commit_submit");
 };
 
 const getContestProblemsList = async () =>{
-  const res = (await getContestProblemService({contestId: route.params.contestId})).data;
+  const res = (await getContestProblemsService({contestId: route.params.contestId})).data;
   problems.value = res.data.map((record: ProblemRecord) =>({
     problemId: record.problemNum,
-    problemNum: record.actualNum,
-    problemNumStr: String.fromCharCode('A'.charCodeAt(0) + record.actualNum),
+    problemIdInContest: record.actualNum,
+    problemLetterInContest: numberToLetter(record.actualNum),
     title: record.problemName,
     timeLimit: record.timeLimit,
     memoryLimit: record.memoryLimit, 

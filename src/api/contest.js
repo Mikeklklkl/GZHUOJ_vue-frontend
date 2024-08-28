@@ -9,6 +9,13 @@ export const getContestListService = async ({search, type, orders, pageSize, goP
 });
 
 
-export const getContestProblemService = async ({contestId}) => axios.post('/gzhuoj-contest/regular/contest/problems', {
+export const getContestProblemsService = async ({contestId}) => axios.post('/gzhuoj-contest/regular/contest/problems', {
     cid: contestId
 });
+
+export const getProblemContentService = async({contestId, problemIdInContest}) => axios.get('/gzhuoj-contest/get/problem/content', {
+    params: {
+        contestId: contestId,
+        problemIdInContest: problemIdInContest
+    }
+})
