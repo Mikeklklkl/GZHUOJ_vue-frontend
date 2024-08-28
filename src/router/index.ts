@@ -55,7 +55,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   // 5.2.2 进入某一道题目
   {
-    path: '/contest/:contestId/problem/:problemId',
+    path: '/contest/:contestId/problem/:problemLetterInContest',
     name: 'contest-problem',
     component: () => import('../pages/contests/problem/Problem.vue')
   },

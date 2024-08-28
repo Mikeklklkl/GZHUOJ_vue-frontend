@@ -1,5 +1,4 @@
 <script setup>
-  import { ElMessage } from 'element-plus';
   import {defineModel, defineEmits} from 'vue'
 
   const emit = defineEmits(['sampleDelete' , 'sampleUp' , 'sampleDown'])

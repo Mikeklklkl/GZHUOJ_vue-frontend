@@ -1,7 +1,12 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter , useRoute} from "vue-router";
 import { getProblemContent } from "@/api/problem.js";
+import { getProblemContentService} from "@/api/contest.js"
+import {letterToNumber} from "@/utils/transferUtils.js"
+
+const route = useRoute();
+const router = useRouter();
 
 // 保存题目内容字段
 const problemTitle = ref("最长上升子序列和");
@@ -13,17 +18,22 @@ const explanationHtml = ref(``);
 
 const testExamples = ref([]);
 
-const languageValue = ref("");
-const language_options = [
-  { value: "C", label: "C" },
-  { value: "C++", label: "C++" },
-  { value: "Java", label: "Java" },
-  { value: "Python3", label: "Python3" },
-  { value: "Go", label: "Go" },
-];
+// submit 可能用到的代码
+// const languageValue = ref("");
+// const language_options = [
+//   { value: "C", label: "C" },
+//   { value: "C++", label: "C++" },
+//   { value: "Java", label: "Java" },
+//   { value: "Python3", label: "Python3" },
+//   { value: "Go", label: "Go" },
+// ];
 
 const getProblemContentEvent = async () => {
-  const res = (await getProblemContent({ problemNum: 817 })).data;
+  const problemIdInContest = route.params.contestId; 
+  const res = (await getProblemContentService({
+    contestId:  route.params.contestId,
+    problemIdInContest: letterToNumber(route.params.problemLetterInContest)
+  })).data;
   console.log(res);
   descriptionHtml.value = res.data.descriptionHtml;
   inputDescriptionHtml.value = res.data.inputDescriptionHtml;
@@ -39,12 +49,8 @@ onMounted(() => {
 
 
 <template>
- 
- 
-     
-        <TopNavFour />
-     
-
+    <TopNavFour />
+    
     <el-container>
       <el-main>
         <div class="textdiv" style="display: flex; justify-content: center">
@@ -110,9 +116,9 @@ onMounted(() => {
           <el-text style="font-size: 15px; color: black"> 比赛倒计时 </el-text>
         </div>
         <div  style="padding:20px">
-          
+  aaaaaaaaaaaaaaaaaa        
             sdaaaaaaaa</br>
-            aaaaaaaaaaaaaaaaaa
+            
         </div>
         <div class="textdiv" style="padding-right: 20px">
           <el-text>
