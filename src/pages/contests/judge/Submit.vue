@@ -5,19 +5,19 @@
   <div>
     <div>
       <el-text class="centered-container" style="font-size: 25px">
-        题目
+        提交
       </el-text>
-      <el-text class="centered-container"> 比赛名字 </el-text>
+      <!-- <el-text class="centered-container"> 比赛名字 </el-text> -->
     </div>
 
     <div style="padding-top: 20px; padding-left: 20px">
       <el-text> Problem: </el-text>
 
-      <el-select v-model="value" placeholder="Select" style="width: 240px;margin-left:10px">
+      <el-select v-model="problemSelected" placeholder="Select" style="width: 240px;margin-left:10px">
         <el-option
-          v-for="item in problem_options"
+          v-for="item in problemOptions"
           :key="item.value"
-          :label="item.label"
+          :label="item.key"
           :value="item.value"
         />
       </el-select>
@@ -25,11 +25,11 @@
     <div style="padding-top: 20px; padding-left: 20px">
       <el-text> Language: </el-text>
  
-      <el-select v-model="value" placeholder="Select" style="width: 240px;margin-left:5px">
+      <el-select v-model="languageSelected" placeholder="Select" style="width: 240px;margin-left:5px">
         <el-option
-          v-for="item in language_options"
+          v-for="item in languageOptions"
           :key="item.value"
-          :label="item.label"
+          :label="item.key"
           :value="item.value"
         />
       </el-select>
@@ -39,89 +39,78 @@
     </div>
   <div style="padding-top: 20px; padding-left: 20px">
     <el-input
-      v-model="textarea"
+      v-model="submitCode"
       style="width: 80%; margin-left: 50px;"
-      :rows="8"
+      :rows="16"
       type="textarea"
       placeholder="Please input"
     />
   </div>
   <div class="centered-container">
-    <el-button @click="submitData">Submit</el-button>
+    <el-button @click="submitEventHandler">Submit</el-button>
   </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import TopNavFour from "../../../components/TopNavFour.vue";
+import { onMounted, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router';
+import {
+  submitService, getLanguageOptionsService,
+  getProblemOptionsService
+} from "@/api/contest.js"
+import { userInfoStore } from '@/stores/userInfoStore';
 
-import axios from 'axios'
+const router = useRouter()
+const route = useRoute()
+const userInfo = userInfoStore()
 
-import { ref } from 'vue'
 
-const value = ref('')
-const textarea = ref('')
-const problem_options = [
-  {
-    value: 'Option1',
-    label: 'Option1',
-  },
-  {
-    value: 'Option2',
-    label: 'Option2',
-  },
-  {
-    value: 'Option3',
-    label: 'Option3',
-  },
-  {
-    value: 'Option4',
-    label: 'Option4',
-  },
-  {
-    value: 'Option5',
-    label: 'Option5',
-  },
-]
+const problemSelected = ref('')
+const languageSelected = ref('')
+const submitCode = ref('')
 
-const language_options = [
-  {
-    value: 'Option1',
-    label: 'Option1',
-  },
-  {
-    value: 'Option2',
-    label: 'Option2',
-  },
-  {
-    value: 'Option3',
-    label: 'Option3',
-  },
-  {
-    value: 'Option4',
-    label: 'Option4',
-  },
-  {
-    value: 'Option5',
-    label: 'Option5',
-  },
-]
+const problemOptions = ref<Option[]>([{
+  key: "A",
+  value: 1
+}])
 
-const submitData = async () => {
-  try {
-    // 创建要发送的 JSON 数据
-    const jsonData = {
-      code: textarea.value, // 从 ref 中获取文本域的内容
-    }
+const languageOptions = ref<Option[]>([{
+  key: "c++",
+  value: 1
+}])
 
-    // 发送 POST 请求到后端
-    const response = await axios.post('YOUR_BACKEND_ENDPOINT_URL', jsonData)
+// TODO 早晚有一天，把它给整改了
+const getProblemOptions = async() => {
+  const res = (await getProblemOptionsService({contestId: route.params.contestId})).data
+  problemOptions.value = res.data.options;
+  console.log("problems", problemOptions.value);
+}
+const getLanguageOptions = async() => {
+  const res = (await getLanguageOptionsService({contestId: route.params.contestId})).data
+  languageOptions.value = res.data.options
+  console.log("language:", languageOptions.value);
+}
 
-    // 处理响应
-    console.log(response.data)
-  } catch (error) {
-    console.error('Error sending data to the backend:', error)
-  }
+const submitEventHandler = async () =>{
+  await submitService({
+    contestId: route.params.contestId,
+    problemId: problemSelected.value,
+    language: languageSelected.value,
+    code: submitCode.value,
+    teamAccount: userInfo.teamAccount
+  })
+}
+
+onMounted(() =>{
+  getProblemOptions();
+  getLanguageOptions();
+})
+
+
+interface Option{
+  key: string,
+  value: number
 }
 </script>
 
