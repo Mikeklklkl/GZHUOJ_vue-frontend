@@ -17,6 +17,8 @@
     "axios": "^1.7.2",
     "bulma": "^1.0.1",
     "element-plus": "^2.7.7",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1",
     "pinia": "^2.2.0",
     "prismjs": "^1.29.0",
     "vditor": "^3.10.4",

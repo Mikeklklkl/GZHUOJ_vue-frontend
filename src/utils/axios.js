@@ -108,7 +108,7 @@ axios.interceptors.response.use(
         }
         // console.log(console.response.data.message);
         // return response;
-        return Promise.reject(new error(response.message))
+        return Promise.reject(new Error(response.message))
     },
     function(error){
         // console.log("here")
