@@ -100,6 +100,7 @@ const options = [
   padding-top: 20px;
   padding-right: 20px;
 }
+
 .inputtext {
   font-size: 17px;
   color: black;

@@ -143,7 +143,7 @@
       <div>
         <el-text class="second-text"> Problem Set: </el-text>
       </div>
-      <div style="padding-top:10px;">
+      <div style="padding-top: 10px">
         <el-table :data="tableData" border>
           <el-table-column label="OJ" width="150px">
             <template #default="scope">
@@ -199,7 +199,9 @@
           Description/Notification(markdown):
         </el-text>
       </div>
-      <div style="padding-top: 10px">markdown组件</div>
+      <div style="padding-top: 10px">
+         <MdEditor ref="descriptionEditor" name="problem content description" id="3"></MdEditor>
+      </div>
     </div>
   </div>
   <div class="card">
@@ -210,6 +212,7 @@
 </template>
 
 <script lang="ts" setup>
+import MdEditor from "@/components/MdEditor.vue";
 import { ref } from "vue";
 import { ElMessage } from "element-plus";
 
@@ -236,10 +239,18 @@ const language_options = [
   { value: "Go", label: "Go" },
 ];
 
-const tableData = ref([{ column1: "", column2: "", column3: "", column4: "", column5: "" }]);
+const tableData = ref([
+  { column1: "", column2: "", column3: "", column4: "", column5: "" },
+]);
 
 const addRow = () => {
-  tableData.value.push({ column1: "", column2: "", column3: "", column4: "", column5: "" });
+  tableData.value.push({
+    column1: "",
+    column2: "",
+    column3: "",
+    column4: "",
+    column5: "",
+  });
 };
 
 const removeRow = (index) => {
@@ -281,11 +292,14 @@ const moveDown = (index) => {
 /* 一级文本 */
 .first-text {
   font-size: 30px;
+  color: black;
+  font-weight: bold;
 }
 
 /* 二级文本 */
 .second-text {
-  font-size: 20px;
+  font-size: 17px;
+  color: black;
 }
 .third-text {
   font-size: 15px;

@@ -1,6 +1,8 @@
 <template>
   <div style="padding: 20px">
-    <el-text style="font-size: 25px"> User Generator </el-text>
+    <el-text style="font-size: 30px; color: black; font-weight: bold">
+      User Generator
+    </el-text>
     <el-button type="primary" @click="changehelp"> help </el-button>
   </div>
 
@@ -11,16 +13,15 @@
   </div>
 
   <div class="p-30">
-    <p>User Description:</p>
+    <p style="font-size: 17px; color: black">User Description:</p>
     <div style="padding: 10px">
       <el-input
         v-model="textarea"
-        style="width: 80%;"
+        style="width: 80%"
         :rows="8"
         type="textarea"
         placeholder=" Description..."
       />
-      
     </div>
     <div class="pt-3">
       <el-button type="primary"> Generate! </el-button>
@@ -43,14 +44,14 @@
   </div>
 
   <div class="pl-5">
-     <el-table :data="tableData" stripe style="height:240px;">
-    <el-table-column prop="idx" label="Idx" width="50" />
-    <el-table-column prop="userid" label="User ID" width="150" />
-    <el-table-column prop="username" label="User Name" width="100"/>
-    <el-table-column prop="school" label="School" width="100" />
-    <el-table-column prop="email" label="Email" width="200" />
-    <el-table-column prop="password" label="Password" width="150" />
-  </el-table>
+    <el-table :data="tableData" stripe style="height: 240px">
+      <el-table-column prop="idx" label="Idx" width="50" />
+      <el-table-column prop="userid" label="User ID" width="150" />
+      <el-table-column prop="username" label="User Name" width="100" />
+      <el-table-column prop="school" label="School" width="100" />
+      <el-table-column prop="email" label="Email" width="200" />
+      <el-table-column prop="password" label="Password" width="150" />
+    </el-table>
   </div>
 </template>
 
@@ -68,86 +69,87 @@ const changehelp = () => {
 
 const tableData = [
   {
-    idx: '1',
-    userid: '32106100134',
-    username: 'tom',
-    school:'gzhu',
-    email:'123123123132@qq.com',
-    password:'555555555'
+    idx: "1",
+    userid: "32106100134",
+    username: "tom",
+    school: "gzhu",
+    email: "123123123132@qq.com",
+    password: "555555555",
   },
-    {
-    idx: '1',
-    userid: '32106100134',
-    username: 'tom',
-    school:'gzhu',
-    email:'123123123132@qq.com',
-    password:'555555555'
+  {
+    idx: "1",
+    userid: "32106100134",
+    username: "tom",
+    school: "gzhu",
+    email: "123123123132@qq.com",
+    password: "555555555",
   },
-    {
-    idx: '1',
-    userid: '32106100134',
-    username: 'tom',
-    school:'gzhu',
-    email:'123123123132@qq.com',
-    password:'555555555'
+  {
+    idx: "1",
+    userid: "32106100134",
+    username: "tom",
+    school: "gzhu",
+    email: "123123123132@qq.com",
+    password: "555555555",
   },
-    {
-    idx: '1',
-    userid: '32106100134',
-    username: 'tom',
-    school:'gzhu',
-    email:'123123123132@qq.com',
-    password:'555555555'
+  {
+    idx: "1",
+    userid: "32106100134",
+    username: "tom",
+    school: "gzhu",
+    email: "123123123132@qq.com",
+    password: "555555555",
   },
-    {
-    idx: '1',
-    userid: '32106100134',
-    username: 'tom',
-    school:'gzhu',
-    email:'123123123132@qq.com',
-    password:'555555555'
+  {
+    idx: "1",
+    userid: "32106100134",
+    username: "tom",
+    school: "gzhu",
+    email: "123123123132@qq.com",
+    password: "555555555",
   },
-    {
-    idx: '1',
-    userid: '32106100134',
-    username: 'tom',
-    school:'gzhu',
-    email:'123123123132@qq.com',
-    password:'555555555'
-  },  {
-    idx: '1',
-    userid: '32106100134',
-    username: 'tom',
-    school:'gzhu',
-    email:'123123123132@qq.com',
-    password:'555555555'
+  {
+    idx: "1",
+    userid: "32106100134",
+    username: "tom",
+    school: "gzhu",
+    email: "123123123132@qq.com",
+    password: "555555555",
   },
-    {
-    idx: '1',
-    userid: '32106100134',
-    username: 'tom',
-    school:'gzhu',
-    email:'123123123132@qq.com',
-    password:'555555555'
+  {
+    idx: "1",
+    userid: "32106100134",
+    username: "tom",
+    school: "gzhu",
+    email: "123123123132@qq.com",
+    password: "555555555",
   },
-    {
-    idx: '1',
-    userid: '32106100134',
-    username: 'tom',
-    school:'gzhu',
-    email:'123123123132@qq.com',
-    password:'555555555'
+  {
+    idx: "1",
+    userid: "32106100134",
+    username: "tom",
+    school: "gzhu",
+    email: "123123123132@qq.com",
+    password: "555555555",
+  },
+  {
+    idx: "1",
+    userid: "32106100134",
+    username: "tom",
+    school: "gzhu",
+    email: "123123123132@qq.com",
+    password: "555555555",
   },
 
-    {
-    idx: '1',
-    userid: '32106100134',
-    username: 'tom',
-    school:'gzhu',
-    email:'123123123132@qq.com',
-    password:'555555555'
-  }
-]
+  {
+    idx: "1",
+    userid: "32106100134",
+    username: "tom",
+    school: "gzhu",
+    email: "123123123132@qq.com",
+    password: "555555555",
+  },
+];
 </script>
 
 <style>

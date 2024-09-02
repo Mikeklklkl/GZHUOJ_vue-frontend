@@ -303,7 +303,7 @@ const sortFiles = (files) => {
     <el-card padding>
       <!-- MdView 组件测试 -->
       <!-- <MdView :htmlValue="textHtml"></MdView> -->
-      <div style="padding-top: 20px; padding-left: 20px">
+      <div >
         <el-text class="first-text"> Add Problem </el-text>
       </div>
       <!--题目名字-->
@@ -455,7 +455,7 @@ const sortFiles = (files) => {
 
 <style scoped>
 .card {
-  padding-left: 20px;
+
   padding-top: 20px;
   padding-right: 20px;
 }
@@ -470,11 +470,14 @@ const sortFiles = (files) => {
 /* 一级文本 */
 .first-text {
   font-size: 30px;
+  color: black;
+  font-weight: bold;
 }
 
 /* 二级文本 */
 .second-text {
-  font-size: 20px;
+  font-size: 17px;
+  color: black;
 }
 
 .va-table-responsive {
