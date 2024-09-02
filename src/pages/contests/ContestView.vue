@@ -109,6 +109,7 @@ onMounted(() =>{
     @current-change="getContestList"
     @prev-click	="getContestList"
     @next-click ="getContestList"
+    style="padding-left:20px;"
   />
 
 <!-- <VaPagination

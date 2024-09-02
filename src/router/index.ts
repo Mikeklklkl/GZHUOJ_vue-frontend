@@ -26,13 +26,6 @@ const routes: Array<RouteRecordRaw> = [
     path: '/home',
     name: 'HomePage',
     component: () => import('../pages/home/HomePage.vue')
-    // children: [
-    //   {
-    //     path: '/question',
-    //     name: 'question',
-    //     component: () => import('@/pages/')
-    //   }
-    // ]
   },
   // 4. problem
   {
@@ -116,6 +109,11 @@ const routes: Array<RouteRecordRaw> = [
         path: 'problemlist',
         name: 'problemlist',
         component: () => import("../pages/manage/problem/ProblemList.vue")
+      },
+      {
+        path: 'contestadd',
+        name: 'contestadd',
+        component: () => import("../pages/manage/contest/ContestAdd.vue")
       }
     ]
   },

@@ -26,6 +26,10 @@
       <el-menu-item index="3-1" @click="goToUesrList" class="white-text">User List</el-menu-item>
       <el-menu-item index="3-2" @click="goToUserGenerator" class="white-text">User Generator</el-menu-item>
     </el-sub-menu>
+    <el-sub-menu index="4" class="white-text">
+      <template #title><span class="white-text">contest</span></template>
+      <el-menu-item index="4-1" @click="goToContestAdd" class="white-text">Contest Add </el-menu-item>
+    </el-sub-menu>
   </el-menu>
 </template>
 
@@ -56,7 +60,11 @@ const goToProblemAdd = () => {
 };
 const goToProblemList = () => {
   router.push({ name: "problemlist" });
-  console.log("跳转到problem;ist");
+  console.log("跳转到problemlist");
+};
+const goToContestAdd = () => {
+  router.push({ name: "contestadd" });
+  console.log("跳转到contestadd");
 };
 </script>
 
