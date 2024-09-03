@@ -87,8 +87,8 @@ const getContestProblemsList = async () =>{
   const res = (await getContestProblemsService({contestNum: route.params.contestNum})).data;
   problems.value = res.data.map((record: ProblemRecord) =>({
     problemNum: record.problemNum,
-    problemNumInContest: record.actualNum,
-    problemLetterInContest: numberToLetter(record.actualNum),
+    problemNumInContest: record.problemLetterIndex,
+    problemLetterInContest: numberToLetter(record.problemLetterIndex),
     title: record.problemName,
     timeLimit: record.timeLimit,
     memoryLimit: record.memoryLimit, 
@@ -106,7 +106,7 @@ interface ProblemRecord {
   // 题目在后端全局题库中的序号
   problemNum: number;
   // 实际序号
-  actualNum: number;
+  problemLetterIndex: number;
   // 题目标题
   problemName: string;
   // 时空限制

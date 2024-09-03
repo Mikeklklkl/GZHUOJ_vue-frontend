@@ -72,9 +72,9 @@ const routes: Array<RouteRecordRaw> = [
   },
   // 5.2.5 榜单
   {
-    path: '/contest/:contestId/ranklist',
-    name: 'ranklist',
-    component: () => import('../pages/contests/judge/RankList.vue')
+    path: '/contest/:contestNum/board',
+    name: 'rank-board',
+    component: () => import('../pages/contests/RankBoard.vue')
   },
 
   // manage模块

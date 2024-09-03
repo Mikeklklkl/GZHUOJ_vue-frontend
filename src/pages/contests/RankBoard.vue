@@ -1,13 +1,13 @@
 <template>
   <TopNavFour />
   <div class="leaderboard">
-    <el-table :data="leaderboardData" border height="85vh">
+    <el-table :data="leaderboardData" border height="40vh">
       <!-- 排名 -->
       <el-table-column prop="rank" label="Place" width="80" align="center">
       </el-table-column>
 
       <!-- 选手/队伍名称 -->
-      <el-table-column prop="name" label="Team" width="200"> </el-table-column>
+      <el-table-column prop="name" label="Team" width="150"> </el-table-column>
 
       <!-- 得分 -->
       <el-table-column prop="score" label="Solved" width="80" align="center">
@@ -100,7 +100,7 @@
 
 <script setup>
 import { ref } from "vue";
-import TopNavFour from "../../../components/TopNavFour.vue";
+import TopNavFour from "../../components/TopNavFour.vue";
 
 // 模拟的题目数据，包含每个题目的名称和通过的队伍数量
 const problems = ref([
@@ -111,6 +111,13 @@ const problems = ref([
   { name: "E", solvedBy: 0 },
   { name: "F", solvedBy: 0 },
   { name: "G", solvedBy: 0 },
+  { name: "H", solvedBy: 2 },
+  { name: "I", solvedBy: 2 },
+  { name: "J", solvedBy: 1 },
+  { name: "K", solvedBy: 3 },
+  { name: "L", solvedBy: 0 },
+  { name: "M", solvedBy: 0 },
+  { name: "N", solvedBy: 0 },
 ]);
 
 // 模拟的榜单数据
@@ -128,6 +135,13 @@ const leaderboardData = ref([
       E: { submissions: 0, passed: false, time: "" },
       F: { submissions: 0, passed: false, time: "" },
       G: { submissions: 0, passed: false, time: "" },
+      H: { submissions: 1, passed: true, time: "120" },
+      I: { submissions: 2, passed: false, time: "" },
+      J: { submissions: 3, passed: true, time: "52" },
+      K: { submissions: 1, passed: true, time: "10" },
+      L: { submissions: 0, passed: false, time: "" },
+      M: { submissions: 0, passed: false, time: "" },
+      N: { submissions: 0, passed: false, time: "" },
     },
     dirt: 36,
     se: 0.44,
@@ -138,13 +152,20 @@ const leaderboardData = ref([
     score: 4,
     penalty: 30,
     results: {
-      A: { submissions: 2, passed: true, time: "150" },
-      B: { submissions: 1, passed: true, time: "20" },
-      C: { submissions: 0, passed: false, time: "" },
-      D: { submissions: 2, passed: true, time: "35" },
-      E: { submissions: 3, passed: false, time: "" },
+      A: { submissions: 1, passed: true, time: "120" },
+      B: { submissions: 2, passed: false, time: "" },
+      C: { submissions: 3, passed: true, time: "52" },
+      D: { submissions: 1, passed: true, time: "10" },
+      E: { submissions: 0, passed: false, time: "" },
       F: { submissions: 0, passed: false, time: "" },
       G: { submissions: 0, passed: false, time: "" },
+      H: { submissions: 1, passed: true, time: "120" },
+      I: { submissions: 2, passed: false, time: "" },
+      J: { submissions: 3, passed: true, time: "52" },
+      K: { submissions: 1, passed: true, time: "10" },
+      L: { submissions: 0, passed: false, time: "" },
+      M: { submissions: 0, passed: false, time: "" },
+      N: { submissions: 0, passed: false, time: "" },
     },
     dirt: 36,
     se: 0.44,
@@ -155,13 +176,20 @@ const leaderboardData = ref([
     score: 4,
     penalty: 50,
     results: {
-      A: { submissions: 1, passed: true, time: "115" },
-      B: { submissions: 2, passed: false, time: "30" },
-      C: { submissions: 1, passed: true, time: "40" },
-      D: { submissions: 0, passed: false, time: "" },
-      E: { submissions: 1, passed: false, time: "" },
+      A: { submissions: 1, passed: true, time: "120" },
+      B: { submissions: 2, passed: false, time: "" },
+      C: { submissions: 3, passed: true, time: "52" },
+      D: { submissions: 1, passed: true, time: "10" },
+      E: { submissions: 0, passed: false, time: "" },
       F: { submissions: 0, passed: false, time: "" },
       G: { submissions: 0, passed: false, time: "" },
+      H: { submissions: 1, passed: true, time: "120" },
+      I: { submissions: 2, passed: false, time: "" },
+      J: { submissions: 3, passed: true, time: "52" },
+      K: { submissions: 1, passed: true, time: "10" },
+      L: { submissions: 0, passed: false, time: "" },
+      M: { submissions: 0, passed: false, time: "" },
+      N: { submissions: 0, passed: false, time: "" },
     },
     dirt: 36,
     se: 0.44,
