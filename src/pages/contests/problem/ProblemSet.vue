@@ -43,7 +43,7 @@ onMounted(() => {
   getContestProblemsList()
 })
 
-// console.log('Current contestId:', contestId);
+// console.log('Current contestNum:', contestNum);
 
 const tableRowClassName = ({
   row,
@@ -76,7 +76,7 @@ const goToProblemDetail = (id: number) => {
   router.push({
     name: "contest-problem",
     params: {
-      contestId: route.params.contestId,
+      contestNum: route.params.contestNum,
       problemLetterInContest: id, // 这里传递的是detailId参数
     },
   });
@@ -84,10 +84,10 @@ const goToProblemDetail = (id: number) => {
 };
 
 const getContestProblemsList = async () =>{
-  const res = (await getContestProblemsService({contestId: route.params.contestId})).data;
+  const res = (await getContestProblemsService({contestNum: route.params.contestNum})).data;
   problems.value = res.data.map((record: ProblemRecord) =>({
-    problemId: record.problemNum,
-    problemIdInContest: record.actualNum,
+    problemNum: record.problemNum,
+    problemNumInContest: record.actualNum,
     problemLetterInContest: numberToLetter(record.actualNum),
     title: record.problemName,
     timeLimit: record.timeLimit,

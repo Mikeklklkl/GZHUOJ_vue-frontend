@@ -32,7 +32,7 @@ const gotToContestProblem = () => {
   router.push({
     name: "contest-problem-set",
     params: {
-      contestId: route.params.contestId, // 这里传递的是detailId参数
+      contestNum: route.params.contestNum, // 这里传递的是detailId参数
     },
   });
   console.log("跳转到competition_detail");
@@ -42,7 +42,7 @@ const goToContestSubmit = () => {
   router.push({ 
     name: "submit",
     params: {
-      contestId: route.params.contestId
+      contestNum: route.params.contestNum
     }
   });
 
@@ -61,7 +61,7 @@ const goToContestSubmissions = () =>{
   router.push({
     name: "contest-submission-detail",
     params: {
-      contestId: route.params.contestId
+      contestNum: route.params.contestNum
     }
   })
 };

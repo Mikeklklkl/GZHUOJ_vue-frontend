@@ -1,5 +1,6 @@
 {
-    "url": "http://localhost:8080/api",
-    "webSocket": "ws://localhost:8080//webSocket"
+    "url": "http://47.121.209.33:8085/api",
+    "local": "http://localhost:8080/api",
+    "webSocket": "ws://localhost:8080//webSocket",
+    "prd": "http://47.121.209.33:8080/api"
 }
-  

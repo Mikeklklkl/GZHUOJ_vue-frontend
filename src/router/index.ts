@@ -42,31 +42,31 @@ const routes: Array<RouteRecordRaw> = [
   },
   // 5.2.1 进入特定比赛查看比赛题目
   {
-    path: '/contest/:contestId',
+    path: '/contest/:contestNum',
     name: 'contest-problem-set',
     component: () => import('../pages/contests/problem/ProblemSet.vue'),
   },
   // 5.2.2 进入某一道题目
   {
-    path: '/contest/:contestId/problem/:problemLetterInContest',
+    path: '/contest/:contestNum/problem/:problemLetterInContest',
     name: 'contest-problem',
     component: () => import('../pages/contests/problem/Problem.vue')
   },
   // 5.2.2.1 查看评测列表
   {
-    path: '/contest/:contestId/submission',
+    path: '/contest/:contestNum/submission',
     name: 'contest-submission-detail',
     component: () => import('../pages/contests/judge/Submissions.vue'),
   },
    // 5.2.3 查看特定提交的详情
   {
-    path: '/contest/:contestId/submission/:submissionId',
+    path: '/contest/:contestNum/submission/:submissionId',
     name: 'submissionDetail',
     component: () => import('../pages/contests/judge/Detail.vue')
   },
   // 5.2.4 提交栏
   {
-    path: '/contest/:contestId/submit',
+    path: '/contest/:contestNum/submit',
     name: 'submit',
     component: () => import('../pages/contests/judge/Submit.vue')
   },

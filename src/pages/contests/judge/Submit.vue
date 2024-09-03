@@ -82,20 +82,20 @@ const languageOptions = ref<Option[]>([{
 
 // TODO 早晚有一天，把它给整改了
 const getProblemOptions = async() => {
-  const res = (await getProblemOptionsService({contestId: route.params.contestId})).data
+  const res = (await getProblemOptionsService({contestNum: route.params.contestNum})).data
   problemOptions.value = res.data.options;
   console.log("problems", problemOptions.value);
 }
 const getLanguageOptions = async() => {
-  const res = (await getLanguageOptionsService({contestId: route.params.contestId})).data
+  const res = (await getLanguageOptionsService({contestNum: route.params.contestNum})).data
   languageOptions.value = res.data.options
   console.log("language:", languageOptions.value);
 }
 
 const submitEventHandler = async () =>{
   await submitService({
-    contestId: route.params.contestId,
-    problemId: problemSelected.value,
+    contestNum: route.params.contestNum,
+    problemNum: problemSelected.value,
     language: languageSelected.value,
     code: submitCode.value,
     teamAccount: userInfo.teamAccount
