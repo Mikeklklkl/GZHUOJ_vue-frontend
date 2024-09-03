@@ -9,7 +9,7 @@
     <el-menu-item index="1" class="color" @click="gotToContestProblem">题目</el-menu-item>
     <el-menu-item index="2" class="color" @click="goToContestSubmit">提交</el-menu-item>
     <el-menu-item index="3" class="color" @click="goToContestSubmissions">评测 </el-menu-item>
-    <el-menu-item index="4" class="color" >榜单</el-menu-item>
+    <el-menu-item index="4" class="color" @click="goToContestRanklist">榜单</el-menu-item>
   </el-menu>
 </template>
 
@@ -48,6 +48,15 @@ const goToContestSubmit = () => {
 
 };
 
+const goToContestRanklist = () =>{
+  router.push({
+    name: "ranklist",
+    params: {
+      contestId: route.params.contestId
+    }
+  })
+};
+
 const goToContestSubmissions = () =>{
   router.push({
     name: "contest-submission-detail",
@@ -55,7 +64,7 @@ const goToContestSubmissions = () =>{
       contestNum: route.params.contestNum
     }
   })
-}
+};
 
 const tableData = [
   {

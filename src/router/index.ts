@@ -70,7 +70,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'submit',
     component: () => import('../pages/contests/judge/Submit.vue')
   },
-  // 还缺了榜单等一些东西
+  // 5.2.5 榜单
+  {
+    path: '/contest/:contestId/ranklist',
+    name: 'ranklist',
+    component: () => import('../pages/contests/judge/RankList.vue')
+  },
 
   // manage模块
   {

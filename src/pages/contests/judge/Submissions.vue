@@ -1,11 +1,6 @@
 <template>
  <TopNavFour/>
   <div style="padding: 20px">
-
-   
-
-
-
     <el-row :gutter="20">
       <el-col :span="5">
         <!--这里是题目的选择，但需要和后端拿数据就没显示-->
