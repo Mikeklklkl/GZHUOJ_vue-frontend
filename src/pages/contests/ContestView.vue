@@ -26,7 +26,7 @@ const getContestDetail = (id) => {
   router.push({
     name: "contest-problem-set",
     params: {
-      contestId: id, // 这里传递的是detailId参数
+      contestNum: id, // 这里传递的是detailId参数
     },
   }).catch(err => {
     console.error(err);
@@ -41,7 +41,7 @@ const getContestList = async()=> {
   })).data;
 
   contests.value = res.data.records.map(record => ({
-    id: record.contestId,
+    id: record.contestNum,
     title: record.title,
     startTime: record.startTime,
     endTime: record.endTime,

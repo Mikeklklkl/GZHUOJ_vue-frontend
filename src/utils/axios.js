@@ -10,7 +10,7 @@ const userInfo = userInfoStore();
 // ##### 设置axios的一些默认配置
 // 1. 允许跨域信息设置凭证
 axios.defaults.withCredentials = true
-axios.defaults.baseURL = config.url
+axios.defaults.baseURL = config.local
 axios.defaults.timeout = 100000
 
 

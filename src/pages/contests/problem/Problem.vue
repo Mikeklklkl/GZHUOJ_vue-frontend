@@ -29,10 +29,10 @@ const testExamples = ref([]);
 // ];
 
 const getProblemContentEvent = async () => {
-  const problemIdInContest = route.params.contestId; 
+  const problemNumInContest = route.params.contestNum; 
   const res = (await getProblemContentService({
-    contestId:  route.params.contestId,
-    problemIdInContest: letterToNumber(route.params.problemLetterInContest)
+    contestNum:  route.params.contestNum,
+    problemNumInContest: letterToNumber(route.params.problemLetterInContest)
   })).data;
   console.log(res);
   descriptionHtml.value = res.data.descriptionHtml;
