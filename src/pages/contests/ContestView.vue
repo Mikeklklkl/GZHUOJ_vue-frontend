@@ -4,6 +4,7 @@ import { ref , onMounted} from "vue";
 import { useRouter } from "vue-router";
 import {getContestListService} from "@/api/contest.js";
 import { inject } from 'vue';
+import ContestCard from "../contests/components/Card.vue";
 // 路由
 const router = useRouter();
 
@@ -16,7 +17,7 @@ const type = ref(0)
 const order = ref({})
 
 // 查询结果
-const contests = ref([])
+const contests1 = ref([])
 
 // 跳转特定比赛
 const getContestDetail = (id) => {
@@ -66,66 +67,32 @@ onMounted(() =>{
   })
 })
 
+const contests = [
+  { id: 1, imageUrl: 'url1', startTime: '2024-09-01', endTime: '2024-09-05' },
+  { id: 2, imageUrl: 'url2', startTime: '2024-09-02', endTime: '2024-09-06' },
+  { id: 2, imageUrl: 'url2', startTime: '2024-09-02', endTime: '2024-09-06' },
+  { id: 2, imageUrl: 'url2', startTime: '2024-09-02', endTime: '2024-09-06' },
+  { id: 2, imageUrl: 'url2', startTime: '2024-09-02', endTime: '2024-09-06' },
+  { id: 2, imageUrl: 'url2', startTime: '2024-09-02', endTime: '2024-09-06' },
+  { id: 2, imageUrl: 'url2', startTime: '2024-09-02', endTime: '2024-09-06' },
+  // 其他比赛数据...
+];
+
 </script>
 
 
 <template>
-  <div style="background-color:rgb(255,255,255)">
-
-  <div style="height: 8%;padding:20px">
-      <el-input
-        v-model="input"
-        style="width: 240px"
-        placeholder="请输入ID"
-        clearable
-      />
+<div class="card-container">
+    <ContestCard v-for="contest in contests" :key="contest.id" :contest="contest" />
   </div>
-
-  <div style="padding:20px">
-    <el-table :data="contests" border stripe style="width: 100%">
-
-      <el-table-column prop="id" label="ID" >
-         <template v-slot="scope">  
-          <div @dblclick="getContestDetail(scope.row.id)">{{ scope.row.id }}</div>  
-        </template>  
-      </el-table-column>
-      <el-table-column prop="title" label="Title" />
-      <el-table-column prop="startTime" label="Start" />
-      <el-table-column prop="endTime" label="End" />
-      <el-table-column prop="status" label="Status" />
-    </el-table>
-  </div>
-</div>
-
-
-<el-pagination
-    :visible = true
-    v-model:current-page="currentPage"
-    v-model:page-size="pageSize"
-    :page-sizes="[10, 20, 30, 40, 50, 60]"
-    layout="total, sizes, prev, pager, next, jumper"
-    :total="total"
-    @size-change="getContestList"
-    @current-change="getContestList"
-    @prev-click	="getContestList"
-    @next-click ="getContestList"
-    style="padding-left:20px;"
-  />
-
-<!-- <VaPagination
-    v-model="value"
-    class="mb-3"
-    :visible-pages="7"
-    :total="100"
-    :direction-links="false"
-    :page-size="pageSize"
-    boundary-numbers
-  />
-
-  Items from {{ value }} to {{ value + pageSize - 1 }} -->
 </template>
 
 
 
-<style>
+<style scoped>
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* 控制卡片之间的间距 */
+}
 </style>

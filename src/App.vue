@@ -16,14 +16,10 @@
         <el-main style="padding: 0">
           <el-button class="floating-button" @click="toggleShow">
             <div v-if="isShow">
-              <el-icon>
-                <ArrowLeftBold />
-              </el-icon>
+              <el-icon><Expand /></el-icon>
             </div>
             <div v-else>
-              <el-icon>
-                <ArrowRightBold />
-              </el-icon>
+              <el-icon><Fold /></el-icon>
             </div>
           </el-button>
           <RouterView />
@@ -57,5 +53,19 @@ provide("toggleShow", toggleShow);
   left: 10px;
   bottom: 10px;
   z-index: 1000; /* 确保按钮在前面 */
+}
+.floating-button {
+  background-color: transparent !important; /* 背景色透明 */
+  border: none !important; /* 去掉边框 */
+  box-shadow: none !important; /* 去掉阴影 */
+}
+
+.floating-button:hover {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.1
+  ) !important; /* 添加悬停效果，可以根据需要调整 */
 }
 </style>

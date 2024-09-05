@@ -1,3 +1,4 @@
+<!--题目集页面-->
 <template>
     <TopNavFour/>
   <div style="padding: 20px">
@@ -10,7 +11,7 @@
     >
       <el-table-column prop="problemLetterInContest" label="ID" width="100">
         <template v-slot="scope">
-          <div @dblclick="goToProblemDetail(scope.row.problemLetterInContest)">
+          <div @click="goToProblemDetail(scope.row.problemLetterInContest)">
             {{ scope.row.problemLetterInContest}}
           </div>
         </template>
