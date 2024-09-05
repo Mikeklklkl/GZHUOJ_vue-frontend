@@ -72,7 +72,7 @@ const submitCode = ref('')
 
 const problemOptions = ref<Option[]>([{
   key: "A",
-  value: 1
+  value: 0
 }])
 
 const languageOptions = ref<Option[]>([{

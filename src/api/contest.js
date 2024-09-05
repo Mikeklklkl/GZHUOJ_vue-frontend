@@ -1,7 +1,6 @@
 import axios from "@/utils/axios.js";
 
-
-export const createContestService = async({
+export const createContestService = async ({
   contestNum,
   contestTitle,
   contestType,
@@ -10,7 +9,7 @@ export const createContestService = async({
   goldRadio,
   silverRadio,
   bronzeRadio,
-  goldCount, 
+  goldCount,
   silverCount,
   bronzeCount,
   frozenTimesBeforeEnd,
@@ -18,27 +17,30 @@ export const createContestService = async({
   languageSelected,
   description,
   descriptionHtml,
-  selectedProblems
-}) => axios.post("gzhuoj-contest/contest/create" , {
-  contestNum: contestNum,
-  title: contestTitle,
-  access: contestType,
-  password: contestPassword,
-  startTimes: contestTime[0].getTime(),
-  endTimes: contestTime[1].getTime(),
-  goldRadio: goldRadio,
-  silverRadio, silverRadio,
-  bronzeRadio, bronzeRadio,
-  goldCount: goldCount,
-  silverCount: silverCount,
-  bronzeCount: bronzeCount,
-  frozenMinute: frozenTimesBeforeEnd,
-  frozenAfter: frozenTimesAfterEnd,
-  language: languageSelected,
-  description: description,
-  descriptionHtml: descriptionHtml,
-  selectedProblemMsgWhenCreateContestList: selectedProblems
-})
+  selectedProblems,
+}) =>
+  axios.post("gzhuoj-contest/contest/create", {
+    contestNum: contestNum,
+    title: contestTitle,
+    access: contestType,
+    password: contestPassword,
+    startTimes: contestTime[0].getTime(),
+    endTimes: contestTime[1].getTime(),
+    goldRadio: goldRadio,
+    silverRadio,
+    silverRadio,
+    bronzeRadio,
+    bronzeRadio,
+    goldCount: goldCount,
+    silverCount: silverCount,
+    bronzeCount: bronzeCount,
+    frozenMinute: frozenTimesBeforeEnd,
+    frozenAfter: frozenTimesAfterEnd,
+    language: languageSelected,
+    description: description,
+    descriptionHtml: descriptionHtml,
+    selectedProblemMsgWhenCreateContestList: selectedProblems,
+  });
 
 export const getContestListService = async ({
   search,
@@ -98,4 +100,20 @@ export const getProblemContentService = async ({
       contestNum: contestNum,
       problemNumInContest: problemNumInContest,
     },
+  });
+
+export const getContestBasicInfoService = async ({ contestNum }) =>
+  axios.get("/gzhuoj-contest/contest/query/basic-contest-info-for-user", {
+    params: {
+      contestNum: contestNum,
+    },
+  });
+
+export const getContestProblemCalculateService = async ({
+  contestNum,
+  problemLetterIndex,
+}) =>
+  axios.post("/gzhuoj-contest/regular/contest/problem/basic-calculation", {
+    contestNum: contestNum,
+    problemLetterIndex: problemLetterIndex,
   });

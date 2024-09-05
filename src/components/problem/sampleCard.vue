@@ -120,7 +120,7 @@
                   <div>
                     <el-button type="success" 
                     @click="sampleUp"
-                    v-show="editable"
+                    v-show="props.editable"
                       ><el-icon><Top /></el-icon
                     ></el-button>
                   </div>
@@ -130,7 +130,7 @@
                   <div>
                     <el-button type="warning"
                     @click="sampleDown"
-                    v-show="editable"
+                    v-show="props.editable"
                       ><el-icon><Bottom /></el-icon
                     ></el-button>
                   </div>

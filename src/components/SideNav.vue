@@ -53,19 +53,18 @@
     </div>
 
     <div >
-
       <div class="container">
         <el-avatar
           src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
           style="margin-top: 2px; margin-bottom: 7px"
         />
       </div>
-
+<!-- 
       <div class="container">
         <el-text class="w-150px mb-2" style="margin-top: 5px" truncated>
           Self element set width 100px5555555555555555555555555555555555
         </el-text>
-      </div>
+      </div> -->
 
       <div class="container" style="margin-top: 5px">
         <el-button type="primary">注册</el-button>
