@@ -14,12 +14,12 @@
       <!--主要内容-->
       <el-container style="background-color: rgb(255, 255, 255)">
         <el-main style="padding: 0">
-          <el-button class="floating-button" @click="toggleShow">
+          <el-button class="floating-button" @click="toggleShow" size="large">
             <div v-if="isShow">
-              <el-icon><Expand /></el-icon>
+              <el-icon style="font-size: 24px;"><Expand /></el-icon>
             </div>
             <div v-else>
-              <el-icon><Fold /></el-icon>
+              <el-icon style="font-size: 24px;"><Fold /></el-icon>
             </div>
           </el-button>
           <RouterView />
