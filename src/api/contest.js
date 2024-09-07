@@ -117,3 +117,26 @@ export const getContestProblemCalculateService = async ({
     contestNum: contestNum,
     problemLetterIndex: problemLetterIndex,
   });
+
+export const getContestSubmissionsService = async ({ 
+  contestNum,
+  problemLetterIndex,
+  teamAccount,
+  teamName,
+  school,
+  status,
+  currentPage,
+  pageSize
+}) =>
+  axios.get("/gzhuoj-contest/regular/contest/submissions", {
+    params: {
+      contestNum: contestNum,
+      problemLetterIndex: problemLetterIndex,
+      teamAccount: teamAccount,
+      teamName: teamName,
+      school: school,
+      status: status,
+      current: currentPage,
+      size: pageSize
+    },
+  });

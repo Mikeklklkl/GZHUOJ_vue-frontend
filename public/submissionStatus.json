@@ -1,0 +1,70 @@
+{
+    "ACCEPTED": {
+        "code": 0,
+        "status": "Accepted"
+    },
+    "PRESENTATION_ERROR": {
+        "code": 1,
+        "status": "Presentation Error"
+    },
+    "WRONG_ANSWER": {
+        "code": 2,
+        "status": "Wrong Answer"
+    },
+    "TIME_LIMIT_EXCEED": {
+        "code": 3,
+        "status": "Time Limit Exceed"
+    },
+    "MEMORY_LIMIT_EXCEED": {
+        "code": 4,
+        "status": "Memory Limit Exceed"
+    },
+    "OUTPUT_LIMIT_EXCEED": {
+        "code": 5,
+        "status": "Output Limit Exceed"
+    },
+    "RUNTIME_ERROR": {
+        "code": 6,
+        "status": "Runtime Error"
+    },
+    "COMPILE_ERROR": {
+        "code": 7,
+        "status": "Compile Error"
+    },
+    "PENDING": {
+        "code": 8,
+        "status": "Pending"
+    },
+    "STATUS_SUBMITTED_FAILED": {
+        "code": 9,
+        "status": "Status Submitted Failed"
+    },
+    "STATUS_SYSTEM_ERROR": {
+        "code": 10,
+        "status": "Status System Error"
+    },
+    "STATUS_CANCELLED": {
+        "code": 11,
+        "status": "Status Cancelled"
+    },
+    "STATUS_COMPILING": {
+        "code": 12,
+        "status": "Status Compiling"
+    },
+    "NONZERO_EXIT_STATUS": {
+        "code": 13,
+        "status": "Nonzero Exit Status"
+    },
+    "INTERNAL_ERROR": {
+        "code": 14,
+        "status": "Internal Error"
+    },
+    "FILE_ERROR": {
+        "code": 15,
+        "status": "File Error"
+    },
+    "SIGNALLED": {
+        "code": 16,
+        "status": "Signalled"
+    }
+}

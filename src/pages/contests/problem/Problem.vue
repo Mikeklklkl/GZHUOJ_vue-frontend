@@ -127,7 +127,7 @@ onMounted(() => {
         <el-text style="font-size: 25px" class="head-text"> Example </el-text>
       </div>
       <div class="textdiv" style="padding-right: 20px">
-        <div v-for="(item) in testExamples" :key=item.testExampleNum>
+        <div v-for="(item) in testExamples" :key= "item.testExampleNum">
           <div class="card">
             <!-- 样例 -->
             <sample-card v-model:input="item.input" v-model:output="item.output" :editable = false

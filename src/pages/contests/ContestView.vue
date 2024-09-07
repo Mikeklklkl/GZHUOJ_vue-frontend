@@ -17,23 +17,9 @@ const type = ref(0)
 const order = ref({})
 
 // 查询结果
-const contests1 = ref([])
+const contests = ref([])
 
-// 跳转特定比赛
-const getContestDetail = (id) => {
-  sideNavShowFlag.value = false;
-  // 将侧边栏设置为关闭状态。
-  // 使用router.push来导航到/detail路由，并传递A查询参数
-  router.push({
-    name: "contest-problem-set",
-    params: {
-      contestNum: id, // 这里传递的是detailId参数
-    },
-  }).catch(err => {
-    console.error(err);
-  });;
-  console.log("跳转到比赛题目集");
-};
+
 
 const getContestList = async()=> {
   const res = (await getContestListService({
@@ -42,7 +28,7 @@ const getContestList = async()=> {
   })).data;
 
   contests.value = res.data.records.map(record => ({
-    id: record.contestNum,
+    contestNum: record.contestNum,
     title: record.title,
     startTime: record.startTime,
     endTime: record.endTime,
@@ -67,17 +53,6 @@ onMounted(() =>{
   })
 })
 
-const contests = [
-  { id: 1, imageUrl: 'url1', startTime: '2024-09-01', endTime: '2024-09-05' },
-  { id: 2, imageUrl: 'url2', startTime: '2024-09-02', endTime: '2024-09-06' },
-  { id: 2, imageUrl: 'url2', startTime: '2024-09-02', endTime: '2024-09-06' },
-  { id: 2, imageUrl: 'url2', startTime: '2024-09-02', endTime: '2024-09-06' },
-  { id: 2, imageUrl: 'url2', startTime: '2024-09-02', endTime: '2024-09-06' },
-  { id: 2, imageUrl: 'url2', startTime: '2024-09-02', endTime: '2024-09-06' },
-  { id: 2, imageUrl: 'url2', startTime: '2024-09-02', endTime: '2024-09-06' },
-  // 其他比赛数据...
-];
-
 </script>
 
 
@@ -93,6 +68,6 @@ const contests = [
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* 控制卡片之间的间距 */
+  gap: 5px; /* 控制卡片之间的间距 */
 }
 </style>
