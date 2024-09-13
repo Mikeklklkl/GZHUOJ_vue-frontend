@@ -64,14 +64,14 @@ export const getContestProblemsService = async ({ contestNum }) =>
 
 export const submitService = async ({
   contestNum,
-  problemNum,
+  problemLetterIndex,
   language,
   code,
   teamAccount,
 }) =>
   axios.post("/gzhuoj-contest/submit", {
     contestNum: contestNum,
-    problemNum: problemNum,
+    problemLetterIndex: problemLetterIndex,
     language: language,
     code: code,
     teamAccount: teamAccount,

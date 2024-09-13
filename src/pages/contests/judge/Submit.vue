@@ -95,7 +95,7 @@ const getLanguageOptions = async() => {
 const submitEventHandler = async () =>{
   await submitService({
     contestNum: route.params.contestNum,
-    problemNum: problemSelected.value,
+    problemLetterIndex: problemSelected.value,
     language: languageSelected.value,
     code: submitCode.value,
     teamAccount: userInfo.teamAccount
