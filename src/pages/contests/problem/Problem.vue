@@ -147,7 +147,7 @@ onMounted(() => {
     </el-main>
 
     <!-- 测边框 -->
-    <el-aside width="20%" style="height: 92vh">
+    <el-aside width="20%" style="height: 92vh;border-left:1px solid #000;">
       <div class="center" style="padding-top: 100px; padding-left: 20px">
         <el-text style=" font-size: 20px; color: black"> {{contestTitle}} </el-text>
       </div>

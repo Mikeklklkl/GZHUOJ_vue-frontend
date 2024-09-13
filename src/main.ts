@@ -1,32 +1,37 @@
-
 import { createApp } from 'vue'
-import router from './router'
 import App from './App.vue'
-
-//引入pinia库
+import router from './router'
 import { createPinia } from 'pinia'
-//引入element-puls组件库
 import ElementPlus from 'element-plus'
-//引入vuestic组件库
-import "vuestic-ui/css";
+import 'element-plus/dist/index.css'  // 确保引入了 Element Plus 的样式
 
-import { createVuestic } from "vuestic-ui";
-//材质图标包
-import { createIconsConfig } from "vuestic-ui";
-import "vuestic-ui/css";
-import "material-design-icons-iconfont/dist/material-design-icons.min.css";
+// 引入 Vuestic 组件库
+import { createVuestic } from 'vuestic-ui'
+import 'vuestic-ui/css'
+
+// 引入图标库
+import 'material-design-icons-iconfont/dist/material-design-icons.min.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
-
 const app = createApp(App)
-const pinia = createPinia()
 
+// 配置 Pinia
+const pinia = createPinia()
 app.use(pinia)
-app.use(createVuestic());
+
+// 配置 ElementPlus
 app.use(ElementPlus)
 
+// 配置 Vuestic
+app.use(createVuestic())
+
+// 配置路由
 app.use(router)
+
+// 注册 Element Plus 图标
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-    app.component(key, component)
+  app.component(key, component)
 }
+
+// 挂载应用
 app.mount('#app')

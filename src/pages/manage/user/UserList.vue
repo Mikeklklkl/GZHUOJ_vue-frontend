@@ -31,7 +31,7 @@
       </el-table-column>
     </el-table>
   </div>
-
+<div style="padding:20px;">
   <el-pagination
     :visible = true
     v-model:current-page="currentPage"
@@ -44,6 +44,7 @@
     @prev-click	="searchSubmit"
     @next-click ="searchSubmit"
   />
+  </div>
 </template>
 
 
