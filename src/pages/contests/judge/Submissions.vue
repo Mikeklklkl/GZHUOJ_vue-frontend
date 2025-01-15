@@ -3,10 +3,13 @@
   <div style="padding: 20px">
     <el-row :gutter="20">
       <el-col :span="5">
-        <!--这里是题目的选择，但需要和后端拿数据就没显示-->
-        <el-select v-model="problemLetter" placeholder="problem" size="large" style="width: 200px">
-          <el-option v-for="item in problemOptions" :key="item.value" :label="item.key" :value="item.value" />
-        </el-select>
+        <div>
+          <!-- <el-text>aaa</el-text> -->
+          <!--这里是题目的选择，但需要和后端拿数据就没显示-->
+          <el-select v-model="problemLetter" placeholder="problem" size="large" style="width: 200px">
+            <el-option v-for="item in problemOptions" :key="item.value" :label="item.key" :value="item.value" />
+          </el-select>
+        </div>
       </el-col>
 
       <el-col :span="5">
@@ -32,7 +35,6 @@
           </template>
         </el-select>
       </el-col>
-
       <el-col :span="3">
         <el-button @click="getSubmissionsEventHandler()">
           <el-icon>

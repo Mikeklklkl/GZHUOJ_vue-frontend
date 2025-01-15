@@ -140,3 +140,21 @@ export const getContestSubmissionsService = async ({
       size: pageSize
     },
   });
+
+
+export const getContestBoardService = async ({
+  contestNum,
+  teamNameSelected,
+  schoolSelected,
+  currentPage,
+  pageSize
+}) =>
+  axios.get("/gzhuoj-contest/regular/contest/board", {
+    params: {
+      contestNum: contestNum,
+      teamNameSelected: teamNameSelected,
+      schoolSelected: schoolSelected,
+      current: currentPage,
+      size: pageSize
+    },
+  });

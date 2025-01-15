@@ -4,7 +4,7 @@
     class="el-menu-demo"
     mode="horizontal"
     @select="handleSelect"
-    style="  background-color:rgb(20,55,95);"
+    style="  background-color: #3C565A;"
   >
     <el-menu-item index="1" class="color" @click="gotToContestProblem">题目</el-menu-item>
     <el-menu-item index="2" class="color" @click="goToContestSubmit">提交</el-menu-item>
@@ -84,7 +84,7 @@ const tableData = [
 
 /* 修改悬浮后菜单项的背景颜色 */
 .el-menu-item:hover {
-  background-color: rgb(30, 75, 130) !important;
+  background-color: rgb(4, 7, 10) !important;
 }
 
 .color{
@@ -94,7 +94,7 @@ const tableData = [
 }
 
 ::v-deep .el-menu-item.is-active {
-  background-color: rgb(0, 66, 164) !important;
+  background-color: rgb(0, 0, 0) !important;
   color: white !important;
 }
 
