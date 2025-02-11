@@ -1,8 +1,5 @@
 <template>
   <div>
-    <TopNavFour> </TopNavFour>
-  </div>
-  <div>
     <div>
       <el-text class="centered-container" style="font-size: 25px">
         提交

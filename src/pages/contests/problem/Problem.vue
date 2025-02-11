@@ -88,8 +88,6 @@ onMounted(() => {
 
 
 <template>
-  <TopNavFour />
-
   <el-container>
     <el-main>
       <div class="textdiv" style="display: flex; justify-content: center">

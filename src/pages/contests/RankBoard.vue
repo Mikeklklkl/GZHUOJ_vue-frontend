@@ -1,8 +1,5 @@
 <template>
-  <TopNavFour />
-
   <div>
-    <h1>ACM Leaderboard</h1>
     <Board :leaderboard="leaderboardData" :problems="problemNames" />
   </div>
 </template>
