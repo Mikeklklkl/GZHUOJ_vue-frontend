@@ -1,5 +1,6 @@
 
 import { createApp } from 'vue'
+
 import router from './router'
 import App from './App.vue'
 
@@ -10,6 +11,7 @@ import ElementPlus from 'element-plus'
 //引入vuestic组件库
 import "vuestic-ui/css";
 
+import "./style/main.css";
 import { createVuestic } from "vuestic-ui";
 //材质图标包
 import { createIconsConfig } from "vuestic-ui";

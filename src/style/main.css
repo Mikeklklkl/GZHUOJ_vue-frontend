@@ -1,0 +1,51 @@
+/* 顶栏字体样式 */
+.top-header-font {
+    font-size: 18px; /* 增大字体 */
+    font-weight: bold; /* 加粗 */
+    color: #ffffff; /* 确保文字是白色，增强对比度 */
+    font-family: "Arial", sans-serif; /* 可选字体，更美观 */
+    padding: 10px 15px;
+    transition: color 0.3s ease, transform 0.2s ease; /* 让交互更流畅 */
+}
+
+/* 侧边栏字体样式 */
+.top-header-font:hover {
+    color: #f1c40f; /* 悬停时颜色变化 */
+    transform: scale(1.1); /* 稍微放大 */
+}
+
+/* 顶栏字体样式 */
+.top-header-menu-font {
+    font-size: 16px; /* 增大字体 */
+    font-weight: bold; /* 加粗 */
+    color: #ffffff; /* 确保文字是白色，增强对比度 */
+    font-family: "Arial", sans-serif; /* 可选字体，更美观 */
+    padding: 10px 15px;
+    transition: color 0.3s ease, transform 0.2s ease; /* 让交互更流畅 */
+}
+
+/* 侧边栏字体样式 */
+.top-header-menu-font:hover {
+    color: #f1c40f; /* 悬停时颜色变化 */
+    transform: scale(1.1); /* 稍微放大 */
+}
+
+
+
+/* 全局字体样式 */
+.side-nav-font {
+    font-size: 17px; /* 增大字体 */
+    font-weight: bold; /* 加粗 */
+    color: #ffffff; /* 确保文字是白色，增强对比度 */
+    font-family: "Arial", sans-serif; /* 可选字体，更美观 */
+    padding: 10px 15px;
+    transition: color 0.3s ease, transform 0.2s ease; /* 让交互更流畅 */
+}
+
+/* 悬停效果 */
+.side-nav-font:hover {
+    color: #f1c40f; /* 悬停时颜色变化 */
+    transform: scale(1.1); /* 稍微放大 */
+}
+
+

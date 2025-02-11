@@ -49,6 +49,11 @@ export const userInfoStore = defineStore('userInfo', () =>{
         teamName.value = ''
     }
 
+    const checkIfLogin = () =>{
+        // return token.value !== '' && token.value !== null
+        return false
+    }
+
     return {
         token, setToken , clearToken,
         userAccount , userName, 
@@ -56,6 +61,8 @@ export const userInfoStore = defineStore('userInfo', () =>{
         setUserName, resetUserName,
         teamAccount, teamName,
         setTeamAccount, setTeamName,
-        resetTeamAccount, resetTeamName
+        resetTeamAccount, resetTeamName,
+        checkIfLogin,
+        userType
     }
 })

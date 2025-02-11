@@ -1,6 +1,5 @@
 <!--题目集页面-->
 <template>
-    <TopNavFour/>
   <div style="padding: 20px">
     <el-table
       border
